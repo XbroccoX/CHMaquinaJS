@@ -35,10 +35,9 @@ header {
 /* Styles for input Type=files */
 #div_file {
   padding: 30px;
-  width: 150px;
   position: relative;
   margin-top: 5px;
-  background-color: whitesmoke;
+  /* background-color: whitesmoke; */
 }
 
 input#files {
@@ -49,20 +48,22 @@ input#files {
   top: 0;
   width: 100%;
   height: 100%;
+  opacity: 0;
 }
 
 span.input-file {
   position: absolute;
   top: calc(50% - 24px);
-  left: calc(10% - 16px);
+  left: calc(10% - 7px);
   width: 50px;
   height: 50px;
 }
 
-.file_icon {
+#file_icon {
   width: 100%;
   height: 100%;
-  color: #3cd500;
+  color: #43cbff;
+  opacity: 30%;
 }
 
 .btn {

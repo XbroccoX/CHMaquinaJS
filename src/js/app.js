@@ -74,6 +74,12 @@ function encender() {
     // console.log(memoriaMostrar);
     document.getElementById('memoria').style.display = 'block';
     document.getElementById('memoria').innerHTML = memoriaMostrar.join('<br></br>');
+
+    // Button style to file
+    document.getElementById('file_icon').style.opacity = '100%';
+    document.getElementById('files').style.cursor = "pointer";
+
+
 }
 function apagar() {
     location.reload()
