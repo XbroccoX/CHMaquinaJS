@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>--CH-MAQUINA-V2021</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap" rel="stylesheet">
+    <script src = " https://unpkg.com/sweetalert/dist/sweetalert.min.js "> </script>
+</head>
+<body >
+    <header>
+        <div>
+            <form name="myForm">
+                <input type="file" name="myInput" accept=".ch" multiple placeholder="Archivos" id="files" disabled/>
+            </form>
+                <button class="btn state" id="encender" onclick="encender()">ON</button>
+                <button class="btn state" id="apagar" onclick="apagar()">OFF</button>
+                <button class="btn ejecutar" id="correrPrograma" onclick="ejecutarPrograma()">Ejecutar Programa</button>                
+                <button class="btn paso" id="stepByStep" onclick="ejecutarPasoAPaso()">Paso a paso</button>
+                  
+        </div>
+        <div >
+            <form class="container-inicio" id="forma" onsubmit="return false">
+                <div class="article">
+                    <p class="btn">Kernel</p>
+                    <div class="article-container--input">
+                        <input type="number" id="kernel" name="kernel" value="79">
+                    </div>
+                </div>
+                <div class="article">
+                    <p class="btn">Memoria</p>
+                    <div class="article-container--input">          <!-- lo tiene como memoria-input -->
+                        <input type="number" name="memoria" id="memoria-input" value="100">
+
+                    </div>
+                </div>
+                <div class="article">
+                    <p class="btn">Acumulador</p>
+                    <div class="article-container--input"> 
+                        <input type="number" name="acumulador" id="acumulador" value="0" disabled='false'>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="show-memory">
+            <button class="btn" id="moMemoria" onclick="moMemoria()" >Mostrar Memoria</button>
+        </div>
+    </header>
+    <!-- -----------------MAIN------------------------   -->
+    <!--    OPERATIONS -->
+    <main>
+        <section class="operations" >
+            <p class="btn">Operaciones</p>
+                    <div class="operaciones-texto" id="instrucciones">  <!-- como instrucciones -->
+
+                    </div>
+        </section>
+    <!--VARIABLES Y ETIQUETAS,  monitor imporesora y muestra de memoria -->
+        <section class="monitor-container">
+            <div class="container-interfaz">
+                <div class="article" id="variable">
+                    <p class="btn">Variable</p>
+                    <div id="variables" ></div>
+                </div>
+                <div class="article" id="tag">
+                    <p class="btn">Etiqueta</p>
+                    <div id="etiquetas"></div> <!-- Como etiquetas -->
+                </div>
+            </div>
+        <!-- Monitor e Impresora -->
+            <div class="monitor-container--img">
+                <div class="monitor-background">
+                    <p class="btn">Monitor</p>
+                    <img id="monitor" src="../src/assets/img/monitor.png" alt="Monitor">
+                    <div class="monitor-text" id="monitor-result">El resultado es:</div>
+                    <button disabled id="modo">Modo kernel</button>
+                </div>
+    
+                <div class="main-impresora">
+                    <p style="text-align: center;">Impresora</p>
+                    <img id="printer" src="../src/assets/img/impresora.png" alt="impresora">
+                    <div class="impresora-texto" id="impresora-result">Resultado:</div>
+                </div>
+            </div>
+            <!-- Muestra Memoria -->
+            <div class="container-memory">
+                <div id="memoria">
+                </div>
+                <button class="btn" id="cerrar" onclick="cerrarDiv()">Cerrar</button>
+            </div>
+
+        </section>
+    </main>
+    <footer id="footer-home">
+        <div class="footer-container-row" >
+            <h3>ID</h3>
+            <div id="idColumn"></div>
+        </div>
+        <div class="footer-container-row" >
+            <h3>Programa</h3>
+            <div id="programa"></div>
+        </div>
+        <div class="footer-container-row" >
+            <h3>=Ins</h3>
+            <div id="ins"></div>
+        </div>
+        <div class="footer-container-row" >
+            <h3>RB</h3>
+            <div id="rb"></div>
+        </div>
+        <div class="footer-container-row" >
+            <h3>RLC</h3>
+            <div id="rlc"></div>
+        </div>
+        <div class="footer-container-row" >
+            <h3>RLP</h3>
+            <div id="rlp"></div>
+        </div>
+        
+        
+    </footer>
+    <!-- <script src="./js/acomulator.js"></script> -->
+    <script src="./js/Nueva.js"></script>
+    <script src="./js/Etiqueta.js"></script>
+    <script src="./js/FileCH.js"></script>
+    <script src="./js/app.js"></script>
+</body>
+</html>
