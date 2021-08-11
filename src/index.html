@@ -29,13 +29,19 @@
             <div class="container-algotimthms input-group mb-5">
                 <label class="input-group-text" for="inputGroupSelect01">Algoritmo</label>
                 <select class="form-select" id="inputGroupSelect01">
-                  <option value="RR" selected>Round Robin</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
+                    <option value="fcfs">FCFS</option>
+                    <option value="sjf">SJF</option>
+                    <option value="RR" selected>Round Robin</option>
+                    <option value="prioridad">Prioridad</option>
                 </select>
             </div>
             <form class="container-inicio" id="forma" onsubmit="return false">
+                <div class="article">
+                    <p class="btno text-center" > Q__</p>
+                    <div class="article-container--input">
+                        <input type="number" id="kernel" name="kernel" value="0">
+                    </div>
+                </div>
                 <div class="article">
                     <p class="btno">Kernel</p>
                     <div class="article-container--input">
