@@ -5,10 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>--CH-MAQUINA-V2021</title>
+    <!-- CSS -->
     <link rel="stylesheet" href="./css/style.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
+    
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap" rel="stylesheet">
-    <script src = " https://unpkg.com/sweetalert/dist/sweetalert.min.js "> </script>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="./bootstrap-5.1.0-dist/css/bootstrap.css">
 </head>
 <body >
     <header>
@@ -16,29 +19,38 @@
             <form name="myForm">
                 <input type="file" name="myInput" accept=".ch" multiple placeholder="Archivos" id="files" disabled/>
             </form>
-                <button class="btn state" id="encender" onclick="encender()">ON</button>
-                <button class="btn state" id="apagar" onclick="apagar()">OFF</button>
-                <button class="btn ejecutar" id="correrPrograma" onclick="ejecutarPrograma()">Ejecutar Programa</button>                
-                <button class="btn paso" id="stepByStep" onclick="ejecutarPasoAPaso()">Paso a paso</button>
+                <button class="btno state" id="encender" onclick="encender()">ON</button>
+                <button class="btno state" id="apagar" onclick="apagar()">OFF</button>
+                <button class="btno ejecutar" id="correrPrograma" onclick="ejecutarPrograma()">Ejecutar Programa</button>                
+                <button class="btno paso" id="stepByStep" onclick="ejecutarPasoAPaso()">Paso a paso</button>
                   
         </div>
-        <div >
+        <div style="display: flex;">
+            <div class="container-algotimthms input-group mb-5">
+                <label class="input-group-text" for="inputGroupSelect01">Algoritmo</label>
+                <select class="form-select" id="inputGroupSelect01">
+                  <option value="RR" selected>Round Robin</option>
+                  <option value="1">One</option>
+                  <option value="2">Two</option>
+                  <option value="3">Three</option>
+                </select>
+            </div>
             <form class="container-inicio" id="forma" onsubmit="return false">
                 <div class="article">
-                    <p class="btn">Kernel</p>
+                    <p class="btno">Kernel</p>
                     <div class="article-container--input">
                         <input type="number" id="kernel" name="kernel" value="79">
                     </div>
                 </div>
                 <div class="article">
-                    <p class="btn">Memoria</p>
+                    <p class="btno">Memoria</p>
                     <div class="article-container--input">          <!-- lo tiene como memoria-input -->
                         <input type="number" name="memoria" id="memoria-input" value="100">
 
                     </div>
                 </div>
                 <div class="article">
-                    <p class="btn">Acumulador</p>
+                    <p class="btno">Acumulador</p>
                     <div class="article-container--input"> 
                         <input type="number" name="acumulador" id="acumulador" value="0" disabled='false'>
                     </div>
@@ -47,14 +59,14 @@
         </div>
 
         <div class="show-memory">
-            <button class="btn" id="moMemoria" onclick="moMemoria()" >Mostrar Memoria</button>
+            <button class="btno" id="moMemoria" onclick="moMemoria()" >Mostrar Memoria</button>
         </div>
     </header>
     <!-- -----------------MAIN------------------------   -->
     <!--    OPERATIONS -->
     <main>
         <section class="operations" >
-            <p class="btn">Operaciones</p>
+            <p class="btno">Operaciones</p>
                     <div class="operaciones-texto" id="instrucciones">  <!-- como instrucciones -->
 
                     </div>
@@ -63,18 +75,18 @@
         <section class="monitor-container">
             <div class="container-interfaz">
                 <div class="article" id="variable">
-                    <p class="btn">Variable</p>
+                    <p class="btno">Variable</p>
                     <div id="variables" ></div>
                 </div>
                 <div class="article" id="tag">
-                    <p class="btn">Etiqueta</p>
+                    <p class="btno">Etiqueta</p>
                     <div id="etiquetas"></div> <!-- Como etiquetas -->
                 </div>
             </div>
         <!-- Monitor e Impresora -->
             <div class="monitor-container--img">
                 <div class="monitor-background">
-                    <p class="btn">Monitor</p>
+                    <p class="btno">Monitor</p>
                     <img id="monitor" src="../src/assets/img/monitor.png" alt="Monitor">
                     <div class="monitor-text" id="monitor-result">El resultado es:</div>
                     <button disabled id="modo">Modo kernel</button>
@@ -90,12 +102,12 @@
             <div class="container-memory">
                 <div id="memoria">
                 </div>
-                <button class="btn" id="cerrar" onclick="cerrarDiv()">Cerrar</button>
+                <button class="btno" id="cerrar" onclick="cerrarDiv()">Cerrar</button>
             </div>
 
         </section>
     </main>
-    <footer id="footer-home">
+    <footer id="footer-home" style="position: fixed;">
         <div class="footer-container-row" >
             <h3>ID</h3>
             <div id="idColumn"></div>

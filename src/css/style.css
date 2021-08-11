@@ -110,7 +110,7 @@ header {
 
 .container-inicio {
   display: flex;
-  align-items: center;
+  align-items: end;
   justify-content: space-between;
 }
 .article {
