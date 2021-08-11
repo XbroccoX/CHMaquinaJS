@@ -163,6 +163,7 @@ header {
   padding: 15px;
   color: #031424;
   cursor: pointer;
+  font-size: 13px;
 }
 .show-memory button:hover {
   color: var(--circle);
@@ -359,6 +360,7 @@ footer {
   color: #3cd500;
   border-bottom: 1px solid green;
   text-align: center;
+  font-size: small;
 }
 
 ::-webkit-scrollbar {
