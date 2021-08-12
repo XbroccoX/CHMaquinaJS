@@ -270,6 +270,7 @@ main .monitor-container {
 }
 .impresora-texto {
   background-color: var(--windowWhite);
+  color: white;
   margin: 0 6px;
   width: 95%;
   height: 97px;
@@ -311,6 +312,7 @@ main .monitor-container {
   padding: 5px;
   overflow: scroll;
   display: none;
+  color: white;
 }
 #variables {
   overflow: scroll;
