@@ -1,28 +1,28 @@
 let memoria = [];
-let btnMemoria = document.getElementById('memoria-btn');
-let kernel = document.getElementById('kernel');
-let memoriaInput = document.getElementById('memoria-input');
-let btnEncender = document.getElementById('encender');
-let btnApagar = document.getElementById('apagar');
-let modo = document.getElementById('modo');
-var file = document.getElementById('files');
-var ejecutar = document.getElementById('correrPrograma')//nuevo
-let divMemoria = document.getElementById('memoria');
-let cerrar = document.getElementById('cerrar');
-let inputAcumulador= document.getElementById('acumulador');
 var lFinal = [];
-let monitor= document.getElementById('monitor-result');//diferente
-let impresora= document.getElementById('impresora-result');//diferente
-let infoFooter= document.getElementById('footer-home');
 var numVar=0;
-let btnStepbyStep=document.getElementById('stepByStep');
 
 let contadorPasoApaso = 0;
 var sum = 0;
-  
+
 var arrayEtiquetas = [];
 var arrayVariables = [];
 var instrucciones = [];
+
+// De izquierda a derecha en la interfaz
+var file = document.getElementById('files');
+let btnEncender = document.getElementById('encender');
+let btnApagar = document.getElementById('apagar');
+
+
+let kernel = document.getElementById('kernel');
+let memoriaInput = document.getElementById('memoria-input');
+let inputAcumulador= document.getElementById('acumulador');
+var ejecutar = document.getElementById('correrPrograma')//nuevo
+let divMemoria = document.getElementById('memoria');
+
+
+
 
 // variables del contenedor footer
 let idColumn= document.getElementById('idColumn');
@@ -31,6 +31,15 @@ let ins= document.getElementById('ins');
 let rb= document.getElementById('rb');
 let rlc= document.getElementById('rlc');
 let rlp= document.getElementById('rlp');
+
+
+// no importantes 
+let monitor= document.getElementById('monitor-result');//diferente
+let modo = document.getElementById('modo');
+let impresora= document.getElementById('impresora-result');//diferente
+let cerrar = document.getElementById('cerrar');
+let infoFooter= document.getElementById('footer-home');
+let btnStepbyStep=document.getElementById('stepByStep');
 
 //  array de Id 
 let listId= [];
@@ -44,37 +53,7 @@ let listRlp=[];
 
 
 
-function encender() {
-    if (Number(memoriaInput.value) > 9999) {
-        alert('EL ESPACIO DE MEMORIA HA EXCEDIDO');
-        apagar();
-    }
-    kernel.disabled=true;
-    memoriaInput.disabled=true;
-    btnEncender.style.display = 'none';
-    btnApagar.style.display = 'inline-block';
-    
-    modo.innerHTML = 'Modo usuario';
-    cerrar.style.display='block';
-    files.disabled = false;
-    let memoriaMostrar = [];
-    let lAcumulador = [0,' Acumulador']
-    memoriaMostrar.push(lAcumulador.toString().replaceAll(',',' '));
-    // console.log(memoriaMostrar);
-    for(let i = 1; i<Number(memoriaInput.value)+1; i++) {
-        if(i <= Number(kernel.value)) {
-            let so = [i];
-            
-            so.push('CHSO_V2021');
-            memoriaMostrar.push(so.toString().replaceAll(',',' '));
-        } else{
-            memoriaMostrar.push(`${i} - - - - `)
-        }
-    }
-    // console.log(memoriaMostrar);
-    document.getElementById('memoria').style.display = 'block';
-    document.getElementById('memoria').innerHTML = memoriaMostrar.join('<br></br>');
-}
+
 function apagar() {
     location.reload()
     kernel.disabled = false;
@@ -83,7 +62,6 @@ function apagar() {
     btnEncender.style.display = 'inline-block';
     modo.innerHTML = 'Modo kernel';
     files.disabled = true;
-    btnMemoria.disabled = false;
 }
 
 file.addEventListener('change', leerArchivo);
