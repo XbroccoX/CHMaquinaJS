@@ -1,5 +1,5 @@
 function leerArchivo(evento) {
-    //console.log(evento.target.files);
+    console.log(evento.target.files)
     for(let i=0; i<evento.target.files.length; i++) {
 
     document.getElementById('instrucciones').innerHTML = "";
@@ -18,13 +18,13 @@ function leerArchivo(evento) {
 
     lArchivo = result.split('\n');
       
+
+    //funcion que elimina espacios, comentarios entre otros
       for(let i=0; i<lArchivo.length; i++) {
         if(lArchivo[i] == "") {
           lArchivo.splice(i, 1);
           i--;
         }
-      }
-      for(let i=0; i<lArchivo.length; i++) {
         if(lArchivo[i].length == 1) {
           lArchivo.splice(i, 1);
           i--;
@@ -34,6 +34,10 @@ function leerArchivo(evento) {
           i--;
         }
       }
+     
+        
+        
+      
 
 
 
@@ -75,7 +79,45 @@ function leerArchivo(evento) {
     
     let bool = verificarSintaxis(listaPrueba); //bool trae la lista de los errores
 
+    let cf = 0;
+    let arrayVariablesIndividual=[];
 
+
+
+    for(l of listaPrueba) {
+            
+      if(l[0].toString().toLowerCase() == 'nueva') {
+
+        let valor = [];
+
+        if(l[2].toUpperCase()== 'C') {
+            for(let i = 4; i<l.length; i++) {
+                valor.push(l[i]);
+            }
+            
+            valor = valor.toString();
+            valor = valor.replaceAll(',', " ");
+
+            let idVariables = Number(listaPrueba.length)+Number(kernel.value)+1;
+            arrayVariables.push(new Nueva(idVariables, l[1], l[2], valor, name));
+            arrayVariablesIndividual.push(new Nueva(idVariables, l[1], l[2], valor, zeroFill(numId,3)))
+
+            // se agrega en el array de interfaz
+            listaPrueba.push([idVariables, arrayVariables[cf].nombre, arrayVariables[cf].valor]); //Aquí se agregan las variables
+            cf++;
+        } else {
+          let idVariables = Number(listaPrueba.length)+Number(kernel.value)+1;
+          arrayVariables.push(new Nueva(idVariables, l[1], l[2], l[3], name));
+          arrayVariablesIndividual.push(new Nueva(idVariables, l[1], l[2], l[3], zeroFill(numId,3)));
+
+          // se agrega en el array del archivo
+          listaPrueba.push([idVariables, arrayVariables[cf].nombre, arrayVariables[cf].valor]);  //Aquí se agregan la variables 
+          cf++;
+        }
+      }
+    }
+    numVar=arrayVariables.length
+    
     sum = sum + +listaPrueba.length + numVar;
     //Revisar si es necesario numVar, ya que estas deberian extraerse desde antes, NO despues de hacer el proceso
 
@@ -87,36 +129,11 @@ function leerArchivo(evento) {
     if(bool.length === 0 && (sum + Number(kernel.value)) <= Number(memoriaInput.value)) {
 
 
-          let cf = 0;
-          let arrayVariablesIndividual=[];
+          
 
           console.log(listaPrueba);
-          for(l of listaPrueba) {
-            
-            if(l[0].toString().toLowerCase() == 'nueva') {
-              let valor = [];
-              if(l[2].toUpperCase()== 'C') {
-                  for(let i = 4; i<l.length; i++) {
-                      valor.push(l[i]);
-                  }
-                  
-                  valor = valor.toString();
-                  valor = valor.replaceAll(',', " ");
-                  let total = Number(listaPrueba.length)+Number(kernel.value)+1;
-                  arrayVariables.push(new Nueva(total, l[1], l[2], valor, name));
-                  arrayVariablesIndividual.push(new Nueva(total, l[1], l[2], valor, zeroFill(numId,3)))
-                  listaPrueba.push([total, arrayVariables[cf].nombre, arrayVariables[cf].valor]); //Aquí se agregan las variables
-                  cf++;
-              } else {
-                let total = Number(listaPrueba.length)+Number(kernel.value)+1;
-                arrayVariables.push(new Nueva(total, l[1], l[2], l[3], name));
-                arrayVariablesIndividual.push(new Nueva(total, l[1], l[2], l[3], zeroFill(numId,3)));
-                listaPrueba.push([total, arrayVariables[cf].nombre, arrayVariables[cf].valor]);  //Aquí se agregan la variables 
-                cf++;
-              }
-            }
-          }
-          numVar=arrayVariables.length
+          
+          
 
           for(let i = 0; i<listaPrueba.length; i++) {
             for(let j = 0; j<Number(memoriaInput.value); j++) {
@@ -132,7 +149,7 @@ function leerArchivo(evento) {
 
         for(instruccion of listaPrueba) {
           
-            lFinal.push(instruccion)
+            lFinal.push(instruccion)// Este es el array en STRING()
         }
 
         let cont = Number(kernel.value) + 1;
@@ -222,6 +239,7 @@ function leerArchivo(evento) {
           listPrograma.push(name)
             // INs
           listIns.push(listaPrueba.length-arrayVariablesIndividual.length)
+          console.log(listIns);
             //RB
           listRb.push(listaPrueba[0][0])
             //RLC
@@ -242,7 +260,7 @@ function leerArchivo(evento) {
         let sinEspacios= [];
         let contar;
         for(m of arrayMemoria) {
-          contar = m.toString().replaceAll(',', ' ');
+          contar = m .toString().replaceAll(',', ' ');
           sinEspacios.push(contar);
         }
         
@@ -287,4 +305,9 @@ function leerArchivo(evento) {
     reader.onload = function () {
         callback(reader.result);
     }
+}
+
+const fillArchivosCH = (name,) => {
+  //name, numLineas, fpMemoria, fpvMemoria, ipMemory, listaMostrar, listaImprimir , etiquetas, variables
+  fileCH.push(new ArchivosCH(name,))
 }

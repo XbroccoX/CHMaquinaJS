@@ -1,3 +1,6 @@
+let fileCH =[]
+
+
 let memoria = [];
 var lFinal = [];
 var numVar=0; //Es contador que cuenta las "VARIABLES" que hay por archivo
