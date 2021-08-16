@@ -1,14 +1,14 @@
 class ArchivosCH{
     static contadorId = 0;
-    constructor(name, numLineas, fpMemoria, fpvMemoria, ipMemory, listaMostrar, listaImprimir , etiquetas, variables){
+    constructor(name, numLineas, fpMemoria, fpvMemoria, ipMemory, etiquetas, variables){
          this._id = ++ArchivosCH.contadorId;
          this._name = name;
          this._numLineas = numLineas;//
          this._fpMemoria = fpMemoria; //muestra el numero donde acaba topdo con memoria sin variables
          this._fpvMemoria = fpvMemoria; //muestra el numero donde acaba todo con memoria con variables
          this._ipMemory = ipMemory; //initial position
-         this._listaMostrar = listaMostrar;//pantalla
-         this._listaImprimir = listaImprimir;//impresora
+        //  this._listaMostrar = listaMostrar;//pantalla
+        //  this._listaImprimir = listaImprimir;//impresora
          this._etiquetas = etiquetas;
          this._variables = variables;
     }
@@ -30,12 +30,12 @@ class ArchivosCH{
     get ipMemory(){
         return this._ipMemory;
     }
-    get listaMostrar(){
-        return this._listaMostrar;
-    }
-    get listaImprimir(){
-        return this._listaImprimir;
-    }
+    // get listaMostrar(){
+    //     return this._listaMostrar;
+    // }
+    // get listaImprimir(){
+    //     return this._listaImprimir;
+    // }
     get etiquetas(){
         return this._etiquetas;
     }
@@ -58,12 +58,12 @@ class ArchivosCH{
     set ipMemory(ipMemory){
         this._ipMemory = ipMemory;
     }
-    set listaMostrar(listaMostrar){
-        this._listaMostrar=listaMostrar;
-    }
-    set listaImprimir(listaImprimir){
-        this._listaImprimir = listaImprimir;
-    }
+    // set listaMostrar(listaMostrar){
+    //     this._listaMostrar=listaMostrar;
+    // }
+    // set listaImprimir(listaImprimir){
+    //     this._listaImprimir = listaImprimir;
+    // }
     set etiquetas(etiquetas){
         this._etiquetas = etiquetas;
     }

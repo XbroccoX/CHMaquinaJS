@@ -1,3 +1,5 @@
+
+
 function leerArchivo(evento) {
     console.log(evento.target.files)
     for(let i=0; i<evento.target.files.length; i++) {
@@ -46,8 +48,7 @@ function leerArchivo(evento) {
     let listaPrueba = [];//LISTA DE LOS ARCHIVOS ORGANIZADOS CON EL ID QUE APARECE EN LA INTERFAZ
     
     
-    let listaFile=[]; //LISTA DE LOS ARCHIVOS ORGANIZADOS CON EL ID QUE APARECE EN LA INTERFAZ
-
+    let listaFile=[]; //LISTA DEL ARCHIVO CARGADO EN ESE MOMENTO
 
     for(instruccion of lArchivo) {
         instruccion=instruccion.trim()
@@ -55,6 +56,11 @@ function leerArchivo(evento) {
         listaFile.push(instruccion.split(' '))
 
     }
+
+    console.log(listaPrueba)
+
+
+
     for(l of lArchivo) {
         for(let j = 0; j< l.length; j++) {
             if(l[j] == '') {
@@ -70,7 +76,7 @@ function leerArchivo(evento) {
           if(l[j] == '') {
               l.splice(j,1);
               j--;
-          } else {
+          }else {
               l[j] = l[j].trim();
           }
 
@@ -90,7 +96,7 @@ function leerArchivo(evento) {
 
         let valor = [];
 
-        if(l[2].toUpperCase()== 'C') {
+        if(l[2].toUpperCase() == 'C') {
             for(let i = 4; i<l.length; i++) {
                 valor.push(l[i]);
             }
@@ -230,7 +236,7 @@ function leerArchivo(evento) {
           
 
 
-
+          
           // Agrega en el footer las lineas
             // id
           listId.push(zeroFill(numId,3))
@@ -295,6 +301,11 @@ function leerArchivo(evento) {
               location.reload()
           }
         }
+        console.log(name,listIns,listRlc,listRlp,listaPrueba, arrayEtiquetas, arrayVariables);
+
+
+        fileCH.push(new ArchivosCH(name,listIns,listRlc,listRlp,listaFile, arrayEtiquetas, arrayVariables))
+        console.log(fileCH)
       })
     }
   }
@@ -307,7 +318,9 @@ function leerArchivo(evento) {
     }
 }
 
-const fillArchivosCH = (name,) => {
-  //name, numLineas, fpMemoria, fpvMemoria, ipMemory, listaMostrar, listaImprimir , etiquetas, variables
-  fileCH.push(new ArchivosCH(name,))
+const fillArchivosCH = (name,listIns,listRlc,listRlp,listaPrueba,arrayEtiquetas,arrayVariables) => {
+  //name, numLineas, fpMemoria, fpvMemoria, ipMemory, etiquetas, variables
+  fileCH.push(new ArchivosCH(name,listIns,listRlc,listRlp,listaPrueba, arrayEtiquetas, arrayVariables))
+  console.log(fileCH)
+
 }

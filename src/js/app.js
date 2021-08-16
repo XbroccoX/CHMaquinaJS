@@ -55,6 +55,7 @@ let listRlc=[];
 let listRlp=[];
 
 
+
 file.addEventListener('change', leerArchivo);
 
 
@@ -267,7 +268,7 @@ function correrArchivo(lista,inicio,fin, arrayEtiquetas, arrayVariables, acumula
             console.log(`${lista[instruccion][1]} = ${v.valor}`);
         }else if(lista[instruccion][1].toLowerCase() =='muestre') {
             if(lista[instruccion][2].toUpperCase().trim() == 'ACUMULADOR'){
-                monitor.innerHTML= `El resultado de (${lista[instruccion][2]}) es: ${acumulador}`;
+                 monitor.innerHTML= `El resultado de (${lista[instruccion][2]}) es: ${acumulador}`;
             }
             else{
                 for(muestre of arrayVariables ){
