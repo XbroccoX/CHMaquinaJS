@@ -1,4 +1,4 @@
-let fileCH =[]
+
 
 
 let memoria = [];

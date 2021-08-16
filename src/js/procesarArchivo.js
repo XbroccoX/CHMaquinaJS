@@ -1,6 +1,15 @@
 
 
+
+
+filesCH = []
+
+
 function leerArchivo(evento) {
+
+  let archivoCH= new ArchivosCH()
+
+
     console.log(evento.target.files)
     for(let i=0; i<evento.target.files.length; i++) {
 
@@ -10,13 +19,17 @@ function leerArchivo(evento) {
 
     let archivo = evento.target.files[i];
 
-    let name= evento.target.files[i].name; //GUARDA EL NOMBRE DEL ARCHIVO A CARGAR
+    let name= evento.target.files[i].name; 
+    
+    archivoCH.name = name;
+
+
+    console.log(archivoCH);
+    //GUARDA EL NOMBRE DEL ARCHIVO A CARGAR
 
     procesarArchivo(archivo, function(result) {
-    
       let lArchivo = []; //LINEAS PERO SIN ID
 
-    console.log(result); // nos devuelve el texto plano del archivo a cargar.
 
     lArchivo = result.split('\n');
       
@@ -57,7 +70,6 @@ function leerArchivo(evento) {
 
     }
 
-    console.log(listaPrueba)
 
 
 
@@ -81,7 +93,18 @@ function leerArchivo(evento) {
           }
 
       }
-  }
+    }
+    for(l of listaFile) {
+      for(let j = 0; j< l.length; j++) {
+          if(l[j] == '') {
+              l.splice(j,1);
+              j--;
+          }else {
+              l[j] = l[j].trim();
+          }
+
+      }
+    }
     
     let bool = verificarSintaxis(listaPrueba); //bool trae la lista de los errores
 
@@ -122,6 +145,44 @@ function leerArchivo(evento) {
         }
       }
     }
+    arrayVariablesFile=[];
+
+    for(l of listaFile) {
+      if(l[0].toString().toLowerCase() == 'nueva') {
+
+        let valor = [];
+
+        if(l[2].toUpperCase() == 'C') {
+            for(let i = 3; i<l.length; i++) {
+                valor.push(l[i]);
+            }
+            
+            valor = valor.toString();
+            valor = valor.replaceAll(',', " ");
+            
+            let idVariables = Number(listaFile.length)+Number(kernel.value)+1;
+            arrayVariablesFile.push(new Nueva(idVariables, l[1], l[2], valor, name));
+            archivoCH.variables = arrayVariablesFile;
+            // se agrega en el array de interfaz
+            // listaPrueba.push([idVariables, arrayVariables[cf].nombre, arrayVariables[cf].valor]); //Aquí se agregan las variables
+            // cf++;
+        } else {
+
+          let idVariables = Number(listaFile.length)+Number(kernel.value)+1;
+            arrayVariablesFile.push(new Nueva(idVariables, l[1], l[2], l[3], name));
+            archivoCH.variables = arrayVariablesFile;
+
+          // se agrega en el array del archivo
+          // listaPrueba.push([idVariables, arrayVariables[cf].nombre, arrayVariables[cf].valor]);  //Aquí se agregan la variables 
+          // cf++;
+        }
+      }
+    }
+
+
+
+
+  
     numVar=arrayVariables.length
     
     sum = sum + +listaPrueba.length + numVar;
@@ -137,7 +198,6 @@ function leerArchivo(evento) {
 
           
 
-          console.log(listaPrueba);
           
           
 
@@ -174,6 +234,7 @@ function leerArchivo(evento) {
           e++;
         }
         
+        archivoCH.lineas = listaFile;
 
 
         for(k of lFinal) {
@@ -206,7 +267,6 @@ function leerArchivo(evento) {
             }
 
         }
-        console.log(mostrarOperaciones);
         
         // console.log(arrayMemoria);
         // document.getElementById('memoria').innerHTML = arrayMemoria.join('<br></br>');
@@ -244,8 +304,8 @@ function leerArchivo(evento) {
             //PRGRAMA
           listPrograma.push(name)
             // INs
-          listIns.push(listaPrueba.length-arrayVariablesIndividual.length)
-          console.log(listIns);
+          listIns=`<div>${listaPrueba.length-arrayVariablesIndividual.length}</div></br>`;
+          // listIns.push(listaPrueba.length-arrayVariablesIndividual.length)
             //RB
           listRb.push(listaPrueba[0][0])
             //RLC
@@ -257,7 +317,7 @@ function leerArchivo(evento) {
           // agrega en el interfaz
           idColumn.innerHTML= listId.join('</br>');
           programa.innerHTML= listPrograma.join('</br>');
-          ins.innerHTML= listIns.join('</br>');
+          ins.innerHTML= listIns
           rb.innerHTML= listRb.join('</br>');
           rlc.innerHTML= listRlc.join('</br>');
           rlp.innerHTML= listRlp.join('</br>');
@@ -301,14 +361,18 @@ function leerArchivo(evento) {
               location.reload()
           }
         }
-        console.log(name,listIns,listRlc,listRlp,listaPrueba, arrayEtiquetas, arrayVariables);
+        console.log(filesCH)
+        filesCH.push(archivoCH)
 
-
-        fileCH.push(new ArchivosCH(name,listIns,listRlc,listRlp,listaFile, arrayEtiquetas, arrayVariables))
-        console.log(fileCH)
+        
+        
       })
+      
     }
   }
+
+
+
 
   function procesarArchivo(ch, callback) {
     var reader = new FileReader();
@@ -316,11 +380,4 @@ function leerArchivo(evento) {
     reader.onload = function () {
         callback(reader.result);
     }
-}
-
-const fillArchivosCH = (name,listIns,listRlc,listRlp,listaPrueba,arrayEtiquetas,arrayVariables) => {
-  //name, numLineas, fpMemoria, fpvMemoria, ipMemory, etiquetas, variables
-  fileCH.push(new ArchivosCH(name,listIns,listRlc,listRlp,listaPrueba, arrayEtiquetas, arrayVariables))
-  console.log(fileCH)
-
 }

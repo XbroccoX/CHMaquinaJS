@@ -1,9 +1,9 @@
 class ArchivosCH{
     static contadorId = 0;
-    constructor(name, numLineas, fpMemoria, fpvMemoria, ipMemory, etiquetas, variables){
+    constructor(name, lineas, fpMemoria, fpvMemoria, ipMemory, etiquetas, variables){
          this._id = ++ArchivosCH.contadorId;
          this._name = name;
-         this._numLineas = numLineas;//
+         this._lineas = lineas;//
          this._fpMemoria = fpMemoria; //muestra el numero donde acaba topdo con memoria sin variables
          this._fpvMemoria = fpvMemoria; //muestra el numero donde acaba todo con memoria con variables
          this._ipMemory = ipMemory; //initial position
@@ -18,8 +18,8 @@ class ArchivosCH{
     get name(){
         return this._name;
     }
-    get numLineas(){
-        return this._numLineas;
+    get lineas(){
+        return this._lineas;
     }
     get fpMemoria(){
         return this._fpMemoria;
@@ -27,7 +27,7 @@ class ArchivosCH{
     get fpvMemoria(){
         return this._fpvMemoria;
     }
-    get ipMemory(){
+    get ipMemory(){//kernel +1
         return this._ipMemory;
     }
     // get listaMostrar(){
@@ -46,8 +46,8 @@ class ArchivosCH{
     set name(name){
         this._name = name;
     }
-    set numLineas(numLineas){
-        this._numLineas= numLineas;
+    set lineas(lineas){
+        this._lineas= lineas;
     }
     set fpMemoria(fpMemoria){
         this._fpMemoria = fpMemoria;
