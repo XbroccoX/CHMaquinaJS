@@ -1,10 +1,9 @@
 
-
-
-
 filesCH = []
 
 
+var initialPosition = 0;
+  console.log(initialPosition);
 function leerArchivo(evento) {
 
   let archivoCH= new ArchivosCH()
@@ -21,6 +20,7 @@ function leerArchivo(evento) {
 
     let name= evento.target.files[i].name; 
     
+    archivoCH.ipMemory = initialPosition;
     archivoCH.name = name;
 
 
@@ -110,6 +110,7 @@ function leerArchivo(evento) {
 
     let cf = 0;
     let arrayVariablesIndividual=[];
+    let idVariables = Number(listaFile.length)+Number(kernel.value)+1;
 
 
 
@@ -120,9 +121,9 @@ function leerArchivo(evento) {
         let valor = [];
 
         if(l[2].toUpperCase() == 'C') {
-            for(let i = 4; i<l.length; i++) {
-                valor.push(l[i]);
-            }
+          for(let i = 3; i<l.length; i++) {
+              valor.push(l[i]);
+          }
             
             valor = valor.toString();
             valor = valor.replaceAll(',', " ");
@@ -145,8 +146,21 @@ function leerArchivo(evento) {
         }
       }
     }
+    
     arrayVariablesFile=[];
+//Array de variables en FileCH
+    archivoCH.lineas = listaFile;
+    
+  
+    sumArchivo = archivoCH.lineas.length;
 
+    
+    for(file of filesCH){
+      sumArchivo +=  file.lineas.length;
+    }
+
+    
+  
     for(l of listaFile) {
       if(l[0].toString().toLowerCase() == 'nueva') {
 
@@ -160,17 +174,19 @@ function leerArchivo(evento) {
             valor = valor.toString();
             valor = valor.replaceAll(',', " ");
             
-            let idVariables = Number(listaFile.length)+Number(kernel.value)+1;
             arrayVariablesFile.push(new Nueva(idVariables, l[1], l[2], valor, name));
+            idVariables++;
+            
             archivoCH.variables = arrayVariablesFile;
+
             // se agrega en el array de interfaz
             // listaPrueba.push([idVariables, arrayVariables[cf].nombre, arrayVariables[cf].valor]); //Aquí se agregan las variables
             // cf++;
         } else {
 
-          let idVariables = Number(listaFile.length)+Number(kernel.value)+1;
             arrayVariablesFile.push(new Nueva(idVariables, l[1], l[2], l[3], name));
             archivoCH.variables = arrayVariablesFile;
+            idVariables++;
 
           // se agrega en el array del archivo
           // listaPrueba.push([idVariables, arrayVariables[cf].nombre, arrayVariables[cf].valor]);  //Aquí se agregan la variables 
@@ -178,16 +194,17 @@ function leerArchivo(evento) {
         }
       }
     }
+    
 
+  archivoCH.fpMemoria = sumArchivo + Number(kernel.value);
 
-
+  archivoCH.fpvMemoria = sumArchivo + archivoCH.variables.length + Number(kernel.value);
 
   
-    numVar=arrayVariables.length
+    console.log(sumArchivo);
+    numVar=arrayVariables.length;
+    sum = sum + +sumArchivo + numVar;
     
-    sum = sum + +listaPrueba.length + numVar;
-    //Revisar si es necesario numVar, ya que estas deberian extraerse desde antes, NO despues de hacer el proceso
-
 
     // console.log(sum);
     console.log(`Sum es = ${sum} y kernel es = ${kernel.value}`);
@@ -200,7 +217,6 @@ function leerArchivo(evento) {
 
           
           
-
           for(let i = 0; i<listaPrueba.length; i++) {
             for(let j = 0; j<Number(memoriaInput.value); j++) {
               if(listaPrueba[i][0] == j) {
@@ -209,6 +225,8 @@ function leerArchivo(evento) {
             }
           }
           console.log(listaPrueba);
+          //sin id, con variables, y archivos
+          
 
           
 
@@ -226,17 +244,10 @@ function leerArchivo(evento) {
             }
             cont++
         }
-        let w = Number(kernel.value)+1;
-        let e = Number(kernel.value)+1;
-        for(k of listaFile){
-          k.unshift(e)
-          caracteres.push(k.toString().replaceAll(',',' '))
-          e++;
-        }
         
-        archivoCH.lineas = listaFile;
-
-
+        
+        //llena de id, la lista a mostrar en el navegador
+        let w = Number(kernel.value)+1;
         for(k of lFinal) {
             k.unshift(w);
             w++;
@@ -361,8 +372,24 @@ function leerArchivo(evento) {
               location.reload()
           }
         }
-        console.log(filesCH)
+
+
+
+
+
+        
+
+
         filesCH.push(archivoCH)
+        console.log(initialPosition);
+        debugger;
+          for(lines of archivoCH.lineas){
+            lines.unshift(initialPosition)
+            initialPosition++;
+          }
+        initialPosition =  archivoCH.fpMemoria + 1
+        console.log(filesCH)
+
 
         
         
@@ -370,6 +397,8 @@ function leerArchivo(evento) {
       
     }
   }
+  
+
 
 
 

@@ -14,6 +14,7 @@ function encender() {
 
     // ARRAY DE SISTEMA OPERATIVO Y KERNEL CON LIMITE DE MEMORIA
     let memoriaMostrar = [];
+    initialPosition += Number(kernel.value) + 1
 
 
     let lAcumulador = [0,' Acumulador']
@@ -32,6 +33,7 @@ function encender() {
     document.getElementById('memoria').style.display = 'block';
     document.getElementById('memoria').innerHTML = memoriaMostrar.join('<br></br>');
 }
+
 
 function apagar() {
     location.reload()

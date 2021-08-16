@@ -55,7 +55,6 @@ let listRlc=[];
 let listRlp=[];
 
 
-
 file.addEventListener('change', leerArchivo);
 
 
