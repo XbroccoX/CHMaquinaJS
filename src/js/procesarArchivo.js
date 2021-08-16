@@ -382,13 +382,24 @@ function leerArchivo(evento) {
 
         filesCH.push(archivoCH)
         console.log(initialPosition);
-        debugger;
           for(lines of archivoCH.lineas){
             lines.unshift(initialPosition)
             initialPosition++;
           }
         initialPosition =  archivoCH.fpMemoria + 1
+        initialVariables= initialPosition;
+        console.log(filesCH.length);
         console.log(filesCH)
+
+        for (let i = 0; i < filesCH.length; i++) {
+          console.log(filesCH[i].variables);
+          for(lineVariable of filesCH[i].variables){
+            console.log(lineVariable.id);
+            lineVariable.id = initialVariables;
+            initialVariables++;
+          }
+        }
+        console.log(filesCH);
 
 
         
