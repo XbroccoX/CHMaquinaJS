@@ -2,7 +2,7 @@
 
 
 let memoria = [];
-var lFinal = [];
+
 var numVar=0; //Es contador que cuenta las "VARIABLES" que hay por archivo
 
 let contadorPasoApaso = 0;
@@ -634,7 +634,7 @@ function zeroFill( number, width )
 }
 
 function ejecutarPrograma(){
-  console.log('entra al ejecutar porgrama');
+  console.log('entra al ejecutar programa');
   correrArchivo(instrucciones, 0,instrucciones.length, arrayEtiquetas, arrayVariables,0);
   
   ejecutar.style.display= 'none'
@@ -684,7 +684,7 @@ function showMemory(varChange,lista, variables,acum){//entra el [2]
           sinEspacios.push(contar);
         }
         
-        document.getElementById('memoria').innerHTML = sinEspacios.join('<br></br>');
+        divMemoria.innerHTML = sinEspacios.join('<br></br>');
 
 }
 

@@ -1,15 +1,13 @@
 
 filesCH = []
-
-
 var initialPosition = 0;
-  console.log(initialPosition);
+
+
 function leerArchivo(evento) {
 
   let archivoCH= new ArchivosCH()
 
 
-    console.log(evento.target.files)
     for(let i=0; i<evento.target.files.length; i++) {
 
     document.getElementById('instrucciones').innerHTML = "";
@@ -24,7 +22,6 @@ function leerArchivo(evento) {
     archivoCH.name = name;
 
 
-    console.log(archivoCH);
     //GUARDA EL NOMBRE DEL ARCHIVO A CARGAR
 
     procesarArchivo(archivo, function(result) {
@@ -183,8 +180,13 @@ function leerArchivo(evento) {
             // listaPrueba.push([idVariables, arrayVariables[cf].nombre, arrayVariables[cf].valor]); //Aquí se agregan las variables
             // cf++;
         } else {
-
-            arrayVariablesFile.push(new Nueva(idVariables, l[1], l[2], l[3], name));
+            valor = l[3]
+            if (valor === undefined){
+              valor = "0";
+            }else{
+              valor = l[3] 
+            }
+            arrayVariablesFile.push(new Nueva(idVariables, l[1], l[2],valor,name));
             archivoCH.variables = arrayVariablesFile;
             idVariables++;
 
@@ -201,7 +203,6 @@ function leerArchivo(evento) {
   archivoCH.fpvMemoria = sumArchivo + archivoCH.variables.length + Number(kernel.value);
 
   
-    console.log(sumArchivo);
     numVar=arrayVariables.length;
     sum = sum + +sumArchivo + numVar;
     
@@ -224,140 +225,13 @@ function leerArchivo(evento) {
               }
             }
           }
-          console.log(listaPrueba);
           //sin id, con variables, y archivos
           
 
           
 
 
-        for(instruccion of listaPrueba) {
-          
-            lFinal.push(instruccion)// Este es el array en STRING()
-        }
-
-        let cont = Number(kernel.value) + 1;
-        let caracteres=[]
-        for(recorrer of lFinal) {
-            if(recorrer[0] == cont) {
-                recorrer.shift();
-            }
-            cont++
-        }
         
-        
-        //llena de id, la lista a mostrar en el navegador
-        let w = Number(kernel.value)+1;
-        for(k of lFinal) {
-            k.unshift(w);
-            w++;
-        }
-      
-        
-        
-        let contador = 0;
-        let lAcumulador= [0, 'Acumulador']
-        let arrayMemoria= []; 
-        let mostrarOperaciones = [];
-        let contenemos;
-        
-        
-        let suma = +kernel.value + +lFinal.length;
-        
-        arrayMemoria.push(lAcumulador);
-        for(let s=1; s<=Number(memoriaInput.value); s++) {
-            if(s<=kernel.value) {
-                arrayMemoria.push(`${s} CHSO_V2021`);
-            } else if(s>kernel.value && s<=suma){
-                arrayMemoria.push(lFinal[contador]);
-                contenemos = lFinal[contador].toString().replaceAll(',',' ')
-                mostrarOperaciones.push(contenemos);
-                contador++; 
-            } else {
-                arrayMemoria.push(`${s} - - - - - - `)
-            }
-
-        }
-        
-        // console.log(arrayMemoria);
-        // document.getElementById('memoria').innerHTML = arrayMemoria.join('<br></br>');
-        instrucciones = arrayMemoria.slice(+kernel.value+1, +suma+1);
-        //Mostrar operaciones en el contenedor sin comas
-        
-        let listaVariables = [];
-        let listaEtiquetas = []; //Lista para variables y etiquetas para Mostrar en el div
-        for(linea of instrucciones) {
-            if(linea[1].toString().toLowerCase()== 'nueva') {
-                listaVariables.push(linea)
-            } else if(linea[1].toString().toLowerCase() == 'etiqueta') {
-            let bandera;
-            if(linea[3] > instrucciones.length) {
-                bandera = true;
-            } else {
-                bandera = false;
-            }
-            arrayEtiquetas.push(new Etiqueta(linea[0], linea[2], linea[3], bandera));
-            listaEtiquetas.push(linea);
-            }
-        }
-        
-        // Seguimiento de variables en contenedor MEMORIA
-        
-          //ARRAY DE INTERFAZ 
-          
-
-
-          
-          // Agrega en el footer las lineas
-            // id
-          listId.push(zeroFill(numId,3))
-          numId++;
-            //PRGRAMA
-          listPrograma.push(name)
-            // INs
-          listIns=`<div>${listaPrueba.length-arrayVariablesIndividual.length}</div></br>`;
-          // listIns.push(listaPrueba.length-arrayVariablesIndividual.length)
-            //RB
-          listRb.push(listaPrueba[0][0])
-            //RLC
-          listRlc.push(listaPrueba[listaPrueba.length-1][0]-arrayVariablesIndividual.length)
-            //RLP
-          let rlpValor= listaPrueba[listaPrueba.length-1][0];
-          listRlp.push(Number(rlpValor))
-
-          // agrega en el interfaz
-          idColumn.innerHTML= listId.join('</br>');
-          programa.innerHTML= listPrograma.join('</br>');
-          ins.innerHTML= listIns
-          rb.innerHTML= listRb.join('</br>');
-          rlc.innerHTML= listRlc.join('</br>');
-          rlp.innerHTML= listRlp.join('</br>');
-
-
-        let sinEspacios= [];
-        let contar;
-        for(m of arrayMemoria) {
-          contar = m .toString().replaceAll(',', ' ');
-          sinEspacios.push(contar);
-        }
-        
-        document.getElementById('memoria').innerHTML = sinEspacios.join('<br></br>');
-        
-        
-        
-        document.getElementById('instrucciones').innerHTML= caracteres.join('<br></br>');
-        for(l of listaVariables) {
-          let va = document.createElement('span');
-          va.append(`${l[0]} ${l[2]}`);
-          document.getElementById('variables').appendChild(va);
-        }
-        for(l of listaEtiquetas) {
-          let eti = document.createElement('span');
-          eti.append(`${l[0]} ${l[2]}`);
-          document.getElementById('etiquetas').appendChild(eti);
-        }
-        ejecutar.style.display = 'inline-block';
-        btnStepbyStep.style.display='inline-block'
 
       }else {
           if(sum + Number(kernel.value) >  Number(memoriaInput.value)){
@@ -381,20 +255,16 @@ function leerArchivo(evento) {
 
 
         filesCH.push(archivoCH)
-        console.log(initialPosition);
           for(lines of archivoCH.lineas){
             lines.unshift(initialPosition)
             initialPosition++;
           }
         initialPosition =  archivoCH.fpMemoria + 1
         initialVariables= initialPosition;
-        console.log(filesCH.length);
-        console.log(filesCH)
+        
 
         for (let i = 0; i < filesCH.length; i++) {
-          console.log(filesCH[i].variables);
           for(lineVariable of filesCH[i].variables){
-            console.log(lineVariable.id);
             lineVariable.id = initialVariables;
             initialVariables++;
           }
@@ -402,7 +272,176 @@ function leerArchivo(evento) {
         console.log(filesCH);
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        let lFinal = [];
+        let lArchivosCargados =[];
+
+        //llenar el array con todas los archivos cargados dentro del array fileCH
+        for (let i = 0; i < filesCH.length; i++) {
+          for(instruccion of filesCH[i].lineas){
+            lFinal.push(instruccion);
+            lArchivosCargados.push(instruccion);
+
+          }
+        }
+
+        //llenar el array con todas las variables cargados dentro del array fileCH
+        for (let i = 0; i < filesCH.length; i++) {
+          for(instruccion of filesCH[i].variables){
+            instruccion = Object.values(instruccion)
+            instruccion.pop();
+            lFinal.push(instruccion);
+          }
+        }
         
+
+
+      let caracteres=[]
+    
+      
+      //llena de id, la lista a mostrar en el navegador
+      
+    
+      
+      
+      let contador = 0;
+      let lAcumulador= [0, 'Acumulador']
+      let arrayMemoria= []; 
+      let mostrarOperaciones = [];
+      let contenemos;
+      let borramos
+      
+      
+      let suma = +kernel.value + +lFinal.length ;
+
+      
+      arrayMemoria.push(lAcumulador);
+      for(let s=1; s<=Number(memoriaInput.value); s++) {
+          if(s<=kernel.value) {
+              arrayMemoria.push(`${s} CHSO_V2021`);
+          } else if(s>kernel.value && s<=suma){
+              arrayMemoria.push(lFinal[contador]);
+                lFinal[contador].toString().replaceAll(',',' ');
+                contador++; 
+          } else {
+              arrayMemoria.push(`${s} - - - - - - `)
+          }
+
+      }
+      for (string of lArchivosCargados){
+        string = string.toString().replaceAll(',',' ');
+        mostrarOperaciones.push(string)
+      }
+      
+      // console.log(arrayMemoria);
+      // document.getElementById('memoria').innerHTML = arrayMemoria.join('<br></br>');
+      instrucciones = arrayMemoria.slice(+kernel.value+1, +suma+1);
+
+        //Mostrar operaciones en el contenedor sin comas
+        
+        let listaVariables = [];
+        
+
+
+        for (let i = 0; i < filesCH.length; i++) {
+          for(variable of filesCH[i].variables){
+            listaVariables.push(Object.values(variable));
+  
+          }
+        }
+
+
+
+
+
+        let listaEtiquetas = []; //Lista para variables y etiquetas para Mostrar en el div
+        for(linea of lFinal) {
+          if(linea[1].toString().toLowerCase() == 'etiqueta') {
+              let bandera;
+              if(linea[3] > lFinal.length) {
+                  bandera = true;
+              } else {
+                  bandera = false;
+              }
+              arrayEtiquetas.push(new Etiqueta(linea[0], linea[2], linea[3], bandera));
+              listaEtiquetas.push(linea);
+              }
+        }
+        
+        // Seguimiento de variables en contenedor MEMORIA
+        
+          //ARRAY DE INTERFAZ 
+        
+
+
+        
+        // Agrega en el footer las lineas
+          // id
+          console.log(filesCH);
+        listId.push(zeroFill(numId,3))
+        numId++;
+          //PRGRAMA
+        listPrograma.push(name)
+          // INs
+        listIns.push(+archivoCH.lineas.length);
+        // listIns.push(listaPrueba.length-arrayVariablesIndividual.length)
+          //RB
+        listRb.push(+archivoCH.ipMemory);
+          //RLC
+        listRlc.push(+archivoCH.fpMemoria)
+          //RLP
+        listRlp.push(Number(archivoCH.fpvMemoria))
+
+        // agrega en el interfaz
+        idColumn.innerHTML= listId.join('</br>');
+        programa.innerHTML= listPrograma.join('</br>');
+        ins.innerHTML= listIns.join('</br>');
+        rb.innerHTML= listRb.join('</br>');
+        rlc.innerHTML= listRlc.join('</br>');
+        rlp.innerHTML= listRlp.join('</br>');
+
+
+      let sinEspacios= [];
+      let contar;
+      for(m of arrayMemoria) {
+        contar = m .toString().replaceAll(',', ' ');
+        sinEspacios.push(contar);
+      }
+      
+      document.getElementById('memoria').innerHTML = sinEspacios.join('<br></br>');
+      
+      
+      
+      document.getElementById('instrucciones').innerHTML= mostrarOperaciones.join('<br></br>');
+      for(l of listaVariables) {
+        let va = document.createElement('span');
+        va.append(`${l[0]} ${l[1]}`);
+        document.getElementById('variables').appendChild(va);
+      }
+      for(l of listaEtiquetas) {
+        let eti = document.createElement('span');
+        eti.append(`${l[0]} ${l[2]}`);
+        document.getElementById('etiquetas').appendChild(eti);
+      }
+      ejecutar.style.display = 'inline-block';
+      btnStepbyStep.style.display='inline-block'
+
+
         
       })
       
