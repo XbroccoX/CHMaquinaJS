@@ -380,11 +380,11 @@ function zeroFill( number, width )
   }
   return number + ""; // always return a string
 }
-
+// let CEP=0
 function ejecutarPrograma(){
   console.log('entra al ejecutar programa');
   correrArchivo(instrucciones, 0,instrucciones.length, arrayEtiquetas, arrayVariables,0,filesCH);
-  
+  // CEP++;
   ejecutar.style.display= 'none'
 }
 
@@ -435,4 +435,5 @@ function showMemory(varChange,lista, variables,acum){//entra el [2]
         divMemoria.innerHTML = sinEspacios.join('<br></br>');
 
 }
+// console.log(CEP);
 

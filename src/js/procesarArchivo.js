@@ -116,7 +116,10 @@ function leerArchivo(evento) {
       if(l[0].toString().toLowerCase() == 'nueva') {
 
         let valor = [];
-
+          if (l[2] === undefined) {
+          alert("La varible no tiene un tipo fijo, por ende no se puede seguir con el proceso, por favor cargue otro archivo");
+          location.reload()
+          }
         if(l[2].toUpperCase() == 'C') {
           for(let i = 3; i<l.length; i++) {
               valor.push(l[i]);
@@ -162,7 +165,7 @@ function leerArchivo(evento) {
       if(l[0].toString().toLowerCase() == 'nueva') {
 
         let valor = [];
-
+        
         if(l[2].toUpperCase() == 'C') {
             for(let i = 3; i<l.length; i++) {
                 valor.push(l[i]);
@@ -441,8 +444,6 @@ function leerArchivo(evento) {
       ejecutar.style.display = 'inline-block';
       btnStepbyStep.style.display='inline-block'
 
-      // console.log(lista,inicio,fin, arrayEtiquetas, arrayVariables, acumulador)
-      console.log(instrucciones, 0,instrucciones.length, arrayEtiquetas, arrayVariables,0);
 
 
         
