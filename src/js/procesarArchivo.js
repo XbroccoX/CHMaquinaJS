@@ -441,6 +441,9 @@ function leerArchivo(evento) {
       ejecutar.style.display = 'inline-block';
       btnStepbyStep.style.display='inline-block'
 
+      // console.log(lista,inicio,fin, arrayEtiquetas, arrayVariables, acumulador)
+      console.log(instrucciones, 0,instrucciones.length, arrayEtiquetas, arrayVariables,0);
+
 
         
       })
