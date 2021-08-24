@@ -6,9 +6,8 @@ function correrArchivo(acumulador, filesCH){
     
     for(i=0 ; i<filesCH.length; i++){
         let file = filesCH[i];
-
-        console.log(file.lineas.length);
-
+        alert(`Ahora corre el programa siguiente que es: ${file.name}`)
+         
         for(let instruccion = 0; instruccion<file.lineas.length; instruccion++){
             console.log(file.lineas[instruccion][1]);
             // debugger;
@@ -56,26 +55,27 @@ function correrArchivo(acumulador, filesCH){
                 }
             }
         }else if(file.lineas[instruccion][1].trim().toLowerCase() =='vayasi') {
-            if(acumulador > 0) {
-                for(e of arrayEtiquetas) {
-                if(file.lineas[instruccion][2].trim().toLowerCase() == e.nombre.trim().toLowerCase() && e.sobrepasa == false) {
-                    console.log('Entró a la recursión');
-                    instruccion = Number(e.valor)-2;
-                } else {
+            debugger;
+            if(Number(acumulador) > 0) {
+                for(e of file.etiquetas) {
+                    if(file.lineas[instruccion][2].trim().toLowerCase() == e.nombre.trim().toLowerCase() && e.sobrepasa == false) {
+                        console.log('Entró a la recursión');
+                        instruccion = Number(e.valor) - 2;
+                    }
                 }
-                }
+
             } else if(acumulador < 0) {
-                for(e of arrayEtiquetas) {
+                for(e of file.etiquetas) {
                 if(file.lineas[instruccion][3].trim().toLowerCase() == e.nombre.trim().toLowerCase() && e.sobrepasa === false) {
                     console.log('Entró a la recursión');
-                    instruccion = Number(e.valor)-2;
+                    instruccion = Number(e.valor) - 2;
                 } 
                 }
             }
             console.log('Me salí x2');
-            console.log(inicio);
-            console.log(fin);
-            console.log(instruccion);
+            // console.log(inicio);
+            // console.log(fin);
+            // console.log(instruccion);
 
         }else if(file.lineas[instruccion][1].toLowerCase() == 'sume') {
                 for(sume of file.variables){
@@ -83,7 +83,6 @@ function correrArchivo(acumulador, filesCH){
                         acumulador=Number(acumulador)
                         acumulador=Number(acumulador) + Number(sume.valor);
                     }
-                    inputAcumulador.value =acumulador;
                 }
                 
             }else if(file.lineas[instruccion][1].toLowerCase() =='reste') {
@@ -259,6 +258,6 @@ function correrArchivo(acumulador, filesCH){
             console.log(`acumulador> ${acumulador}`);
             showMemory(file.lineas[instruccion][2],file,acumulador);
         }
-        alert(`Ahora corre el programa siguiente que es: ${file.nombre}`)
+        
     }
 }
