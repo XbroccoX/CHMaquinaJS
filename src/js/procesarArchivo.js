@@ -1,6 +1,7 @@
 
 filesCH = []
 var initialPosition = 0;
+let listaEtiquetas = []; //Lista para etiquetas para Mostrar en el div
 
 
 function leerArchivo(evento) {
@@ -148,6 +149,7 @@ function leerArchivo(evento) {
     }
     
     arrayVariablesFile=[];
+    arrayEtiquetasFile =[]
 //Array de variables en FileCH
     archivoCH.lineas = listaFile;
     
@@ -197,6 +199,17 @@ function leerArchivo(evento) {
           // listaPrueba.push([idVariables, arrayVariables[cf].nombre, arrayVariables[cf].valor]);  //Aquí se agregan la variables 
           // cf++;
         }
+      }else if(l[0].toString().toLowerCase() == 'etiqueta'){
+
+              let bandera;
+              if(l[2] > listaFile.length) {
+                  bandera = true;
+              } else {
+                  bandera = false;
+              }
+              arrayEtiquetasFile.push(new Etiqueta(l[1], l[2], bandera));
+              archivoCH.etiquetas = arrayEtiquetasFile
+              listaEtiquetas.push(l);
       }
     }
     
@@ -372,19 +385,7 @@ function leerArchivo(evento) {
 
 
 
-        let listaEtiquetas = []; //Lista para variables y etiquetas para Mostrar en el div
-        for(linea of lFinal) {
-          if(linea[1].toString().toLowerCase() == 'etiqueta') {
-              let bandera;
-              if(linea[3] > lFinal.length) {
-                  bandera = true;
-              } else {
-                  bandera = false;
-              }
-              arrayEtiquetas.push(new Etiqueta(linea[0], linea[2], linea[3], bandera));
-              listaEtiquetas.push(linea);
-              }
-        }
+       
         
         // Seguimiento de variables en contenedor MEMORIA
         

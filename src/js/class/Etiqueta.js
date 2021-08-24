@@ -1,15 +1,13 @@
 class Etiqueta { 
-    constructor(id, nombre, valor, sobrepasa) {
-        this._id = id;
+    static contadorEtiqueta = 0
+    constructor(nombre, valor, sobrepasa) {
+        this._id = ++Etiqueta.contadorEtiqueta;
         this._nombre = nombre;
         this._sobrepasa = sobrepasa;
         this._valor= valor;
     }
     get id() {
         return this._id;
-    }
-    set id (id) {
-        this._id = id;
     }
     get nombre() {
         return this._nombre;

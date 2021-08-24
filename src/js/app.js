@@ -7,7 +7,7 @@ var numVar=0; //Es contador que cuenta las "VARIABLES" que hay por archivo
 let contadorPasoApaso = 0;
 var sum = 0;
 
-var arrayEtiquetas = [];
+
 var arrayVariables = [];
 var instrucciones = [];
 

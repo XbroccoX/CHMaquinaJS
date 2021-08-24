@@ -39,20 +39,19 @@ function correrArchivo(acumulador, filesCH){
             }else if(file.lineas[instruccion][1].toLowerCase() =='almacene') {
                 for(almacene of file.variables){
                     if(file.lineas[instruccion][2] == almacene.nombre){
-                        console.log(`valor de ${almacene.nombre} = ${almacene.valor}`);
+                        // console.log(`valor de ${almacene.nombre} = ${almacene.valor}`);
                         almacene.valor = acumulador;
-                        
                     }
                 }
                 
-                inputAcumulador.value=acumulador;
-                
-                
             }else if(file.lineas[instruccion][1].trim().toLowerCase() === 'vaya') {
-            for(etiquetas of arrayEtiquetas) {
+            for(etiquetas of file.etiquetas) {
                 if(etiquetas.nombre== file.lineas[instruccion][2].trim()) {
                     if(etiquetas.sobrepasa == false  && etiquetas.valor < file.lineas[instruccion-1]) {
-                        instruccion = Number(etiquetas.valor)-2;
+                        instruccion = Number(etiquetas.valor) - 2;
+                    }else{
+                        alert(`La etiqueta ${etiquetas.nombre} con un valor de ${etiquetas.valor}, sobrepasa la longitud del archivo que es= ${file.lineas.length}`);
+                        location.reload()
                     }
                 }
             }
@@ -94,7 +93,7 @@ function correrArchivo(acumulador, filesCH){
                     }else if(file.lineas[instruccion][2] == 'acumulador'){
                     acumulador = 0
                     }
-                    inputAcumulador.value = acumulador;
+                    
                 }
             }else if(file.lineas[instruccion][1].toLowerCase() =='multiplique') {
                 for(multi of file.variables){
@@ -127,14 +126,12 @@ function correrArchivo(acumulador, filesCH){
                         let cad= acumulador +' '+ concatene.valor;
                         inputAcumulador.type= 'text';
                         acumulador = cad;
-                        inputAcumulador.value = acumulador;
                     }
                 }
             }else if(file.lineas[instruccion][1].toLowerCase() =='elimine') {
                 
                 let lol = file.lineas[instruccion][2].trim()
                 acumulador=acumulador.replaceAll(lol,'')
-                inputAcumulador.value=acumulador;
 
             }else if(file.lineas[instruccion][1].trim() =='Y') {
                 let primerOperando = 0;
@@ -237,7 +234,6 @@ function correrArchivo(acumulador, filesCH){
                     extraer.push(acumulador[i]);
                 }
                 acumulador = extraer.join('');
-                inputAcumulador.value=acumulador;
                 /* acumulador = acumulador.slice(Number(instruccion[2]));
                 console.log(acumulador); */
                 // inputAcumulador.value = acumulador;
