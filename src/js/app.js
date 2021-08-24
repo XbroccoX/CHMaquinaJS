@@ -1,8 +1,7 @@
 
 
-
 let memoria = [];
-
+let listaArchivos = []
 var numVar=0; //Es contador que cuenta las "VARIABLES" que hay por archivo
 
 let contadorPasoApaso = 0;
@@ -21,6 +20,7 @@ let btnApagar = document.getElementById('apagar');
 let kernel = document.getElementById('kernel');
 let memoriaInput = document.getElementById('memoria-input');
 let inputAcumulador= document.getElementById('acumulador');
+let acomulador = inputAcumulador.value;
 var ejecutar = document.getElementById('correrPrograma')//nuevo
 let divMemoria = document.getElementById('memoria');
 
@@ -383,48 +383,54 @@ function zeroFill( number, width )
 // let CEP=0
 function ejecutarPrograma(){
   console.log('entra al ejecutar programa');
-  correrArchivo(instrucciones, 0,instrucciones.length, arrayEtiquetas, arrayVariables,0,filesCH);
+  console.log(`acomulador input${acomulador}`);
+  correrArchivo(acomulador,filesCH);
   // CEP++;
   ejecutar.style.display= 'none'
 }
 
-function showMemory(varChange,lista, variables,acum){//entra el [2]
-  for(l of lista){
-      if(varChange== l[1]){
-        for(v of variables){
-          if (varChange == v.nombre && varChange) {
-            l[2]=v.valor;
+function showMemory(varChange,lista,acum){//entra el [2]
+  console.log(varChange);
+  console.log(lista);
+  console.log(acum);
+  console.log(listaArchivos);
+  // debugger
+  for(l of lista.variables){
+      if(varChange== l.nombre){
+        for(v of listaArchivos){
+          if(varChange === v[1]){
+            v[3]=l.valor;
           }
         }
-    }
+      } 
   }
+
+
   let contador = 0;
-        
-        
-        
-        let suma = +kernel.value + +lista.length;
-        
+
+        let lAcumulador= [acum, 'Acumulador']
+        let arrayMemoria= []; 
+
+        let suma = +kernel.value + +listaArchivos.length ;
+         
         if(typeof acum == 'object') {
           acum=0;
         }
-        let lAcumulador= [acum, 'Acumulador'];
-        let arrayMemoria= []; 
-        let mostrarOperaciones = [];
-        let contenemos;
+        console.log(listaArchivos);
         arrayMemoria.push(lAcumulador);
-        for(let s=1; s<Number(memoriaInput.value); s++) {
+        for(let s=1; s<=Number(memoriaInput.value); s++) {
             if(s<=kernel.value) {
                 arrayMemoria.push(`${s} CHSO_V2021`);
             } else if(s>kernel.value && s<=suma){
-                arrayMemoria.push(lista[contador]);
-                contenemos = lista[contador].toString().replaceAll(',',' ')
-                mostrarOperaciones.push(contenemos);
-                contador++; 
+                arrayMemoria.push(listaArchivos[contador]);
+                  listaArchivos[contador].toString().replaceAll(',',' ');
+                  contador++; 
             } else {
                 arrayMemoria.push(`${s} - - - - - - `)
             }
-
+  
         }
+
         let sinEspacios= [];
         let contar;
         for(m of arrayMemoria) {
@@ -433,7 +439,7 @@ function showMemory(varChange,lista, variables,acum){//entra el [2]
         }
         
         divMemoria.innerHTML = sinEspacios.join('<br></br>');
-
+        inputAcumulador.value=acum;
 }
 // console.log(CEP);
 

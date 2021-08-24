@@ -443,16 +443,13 @@ function leerArchivo(evento) {
       }
       ejecutar.style.display = 'inline-block';
       btnStepbyStep.style.display='inline-block'
+      
+      listaArchivos = lFinal;
 
-
-
-        
       })
       
     }
   }
-  
-
 
 
 
@@ -463,4 +460,5 @@ function leerArchivo(evento) {
     reader.onload = function () {
         callback(reader.result);
     }
-}
+  }
+
