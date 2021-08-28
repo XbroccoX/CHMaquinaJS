@@ -11,7 +11,6 @@ function verificarSintaxis(lista) {
     nombreEtiqueta = [];
   
     for(let instruccion=0; instruccion < lista.length; instruccion++) {
-  
       let linea = "";
   
       for (let index = 0; index < lista[instruccion].length; index++) {
@@ -343,7 +342,7 @@ function verificarSintaxis(lista) {
         if (lista[instruccion].length < 1) {
           errores.push("Error de sintaxis, menos de 1 operadores especificados: " + linea);
         }
-      } else {
+      } else if(!lista[instruccion][0].trim().includes('//')){
         errores.push("No se reconoce la intrucción: " + linea);
       }
     }

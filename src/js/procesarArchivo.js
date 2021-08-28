@@ -42,10 +42,10 @@ function leerArchivo(evento) {
           lArchivo.splice(i, 1);
           i--;
         }
-        if(lArchivo[i].includes('//')) {
-          lArchivo.splice(i,1);
-          i--;
-        }
+        // if(lArchivo[i].includes('//')) {
+        //   lArchivo.splice(i,1);
+        //   i--;
+        // }
       }
      
         
@@ -351,6 +351,11 @@ function leerArchivo(evento) {
           if(s<=kernel.value) {
               arrayMemoria.push(`${s} CHSO_V2021`);
           } else if(s>kernel.value && s<=suma){
+            let commentIndex=lFinal[contador].findIndex(comment => comment =='//');
+            if (commentIndex !== -1) {
+              lFinal[contador].splice(commentIndex,1);
+            }
+            
               arrayMemoria.push(lFinal[contador]);
                 lFinal[contador].toString().replaceAll(',',' ');
                 contador++; 
