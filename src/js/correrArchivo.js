@@ -1,5 +1,5 @@
 function correrArchivo(acumulador, filesCH){
-    
+    btnStepbyStep.style.display='none';
     let listMonitor = [];
     let listPrinter = [];
     let time = 0;

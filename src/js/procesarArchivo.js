@@ -253,6 +253,7 @@ function leerArchivo(evento) {
           if(sum + Number(kernel.value) >  Number(memoriaInput.value)){
             alert(`Error: se excede el espacio de memoria`)
             document.getElementById('instrucciones').innerHTML = 'Error de sintaxis';
+            location.reload();
             
           }
           else{

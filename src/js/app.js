@@ -4,7 +4,9 @@ let memoria = [];
 let listaArchivos = []
 var numVar=0; //Es contador que cuenta las "VARIABLES" que hay por archivo
 
-let contadorPasoApaso = 0;
+let contPasoApaso = 0;
+let acumStepbyStep = 0;
+let nextFile = 0
 var sum = 0;
 
 
@@ -67,7 +69,7 @@ function cerrarDiv() {
     cerrar.style.display = 'none'
 }
 function ejecutarPasoAPaso(){
-  stepByStep(acomulador,filesCH);
+  stepByStep(acumStepbyStep,filesCH, contPasoApaso);
   
 };
 
