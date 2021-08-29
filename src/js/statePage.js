@@ -5,6 +5,7 @@ function encender() {
     }
     kernel.disabled=true;
     memoriaInput.disabled=true;
+    inputMetodoAlgoritm.disabled= true;
     btnEncender.style.display = 'none';
     btnApagar.style.display = 'inline-block';
     
@@ -30,8 +31,21 @@ function encender() {
             memoriaMostrar.push(`${i} - - - - `)
         }
     }
+    
+    if (inputMetodoAlgoritm.value === 'RR' && quantum === 0){
+        let quantum = prompt(`Ingrese el valor del quantum, ya que en defecto será (5)`);
+        quantum = quantum ? Number(quantum) : 5;
+        inputQuantum.value =  quantum;
+    }
+
+
+
+
+
+
     document.getElementById('memoria').style.display = 'block';
     document.getElementById('memoria').innerHTML = memoriaMostrar.join('<br></br>');
+
 }
 
 
@@ -39,6 +53,7 @@ function apagar() {
     location.reload()
     kernel.disabled = false;
     memoriaInput.disabled = false;
+    inputMetodoAlgoritm.disabled = false;
     btnApagar.style.display = 'none';
     btnEncender.style.display = 'inline-block';
     modo.innerHTML = 'Modo kernel';

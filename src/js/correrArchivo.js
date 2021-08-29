@@ -31,6 +31,7 @@ function correrArchivo(acumulador, filesCH){
                         }
                     }
                     console.log('lea');
+                    contIO++;
                     
                     
                 }else if(file.lineas[instruccion][1].toLowerCase() =='cargue') {
@@ -41,6 +42,7 @@ function correrArchivo(acumulador, filesCH){
                         acumulador = String(file.variables[variable].valor);
                         }
                     }
+                    contCPU++
                 }else if(file.lineas[instruccion][1].toLowerCase() =='almacene') {
                     for(almacene of file.variables){
                         if(file.lineas[instruccion][2] == almacene.nombre){
@@ -48,6 +50,7 @@ function correrArchivo(acumulador, filesCH){
                             almacene.valor = acumulador;
                         }
                     }
+                    contCPU++
                     
                 }else if(file.lineas[instruccion][1].trim().toLowerCase() === 'vaya') {
                 for(etiquetas of file.etiquetas) {
@@ -60,6 +63,8 @@ function correrArchivo(acumulador, filesCH){
                         }
                     }
                 }
+                contCPU++
+
             }else if(file.lineas[instruccion][1].trim().toLowerCase() =='vayasi') {
                 // debugger;
                 if(Number(acumulador) > 0) {
@@ -79,6 +84,7 @@ function correrArchivo(acumulador, filesCH){
                     }
                 }
                 console.log('Me salí x2');
+                contCPU++
             
 
             }else if(file.lineas[instruccion][1].toLowerCase() == 'sume') {
@@ -88,6 +94,7 @@ function correrArchivo(acumulador, filesCH){
                             acumulador=Number(acumulador) + Number(sume.valor);
                         }
                     }
+                    contCPU++
                     
                 }else if(file.lineas[instruccion][1].toLowerCase() =='reste') {
                     for(reste of file.variables){
@@ -98,24 +105,32 @@ function correrArchivo(acumulador, filesCH){
                         }
                         
                     }
+                    contCPU++
+
                 }else if(file.lineas[instruccion][1].toLowerCase() =='multiplique') {
                     for(multi of file.variables){
                         if(file.lineas[instruccion][2] == multi.nombre){
                             acumulador= acumulador * multi.valor;
                         }
                     }
+                    contCPU++
+
                 }else if(file.lineas[instruccion][1].toLowerCase() =='divida') {
                     for(div of file.variables){
                         if(file.lineas[instruccion][2] == div.nombre && div.valor != 0){
                             acumulador= acumulador / div.valor;
                         }
                     }
+                    contCPU++
+
                 }else if(file.lineas[instruccion][1].toLowerCase() =='potencia') {
                     for(potencia of file.variables){
                         if(file.lineas[instruccion][2] == potencia.nombre && potencia.valor.isInteger()){
                             acumulador= acumulador ** potencia.valor;
                         }
                     }
+                    contCPU++
+
                 }else if(file.lineas[instruccion][1].toLowerCase() =='modulo') {
                     for(mod of file.variables){
                         if(file.lineas[instruccion][2] == mod.nombre){
@@ -123,6 +138,8 @@ function correrArchivo(acumulador, filesCH){
                             alert(`El modulo de ${acumulador} % ${mod.valor} = ${modulo}(linea ${mod.id})`);
                         }
                     }
+                    contCPU++
+
                 }else if(file.lineas[instruccion][1].toLowerCase() =='concatene') {
                     for(concatene of file.variables){
                         if(file.lineas[instruccion][2].trim() == concatene.nombre){
@@ -131,10 +148,13 @@ function correrArchivo(acumulador, filesCH){
                             acumulador = cad;
                         }
                     }
+                    contCPU++
+
                 }else if(file.lineas[instruccion][1].toLowerCase() =='elimine') {
                     
                     let lol = file.lineas[instruccion][2].trim()
                     acumulador=acumulador.replaceAll(lol,'')
+                    contCPU++
 
                 }else if(file.lineas[instruccion][1].trim() =='Y') {
                     let primerOperando = 0;
@@ -160,6 +180,8 @@ function correrArchivo(acumulador, filesCH){
                             }
                         }
                     }
+                    contCPU++
+
                 }else if(file.lineas[instruccion][1].trim() =='O') {
                     let primerOperando = 0;
                     let segundoOperando = 0;
@@ -185,6 +207,8 @@ function correrArchivo(acumulador, filesCH){
                             }
                         }
                     }
+                    contCPU++
+
                 }else if(file.lineas[instruccion][1].trim() =='NO') {
                     let enNegativo 
                     for(v of file.variables){
@@ -204,7 +228,11 @@ function correrArchivo(acumulador, filesCH){
                         v.valor = enNegativo;
                     }
                     }
+                    
                     console.log(`${file.lineas[instruccion][1]} = ${v.valor}`);
+
+                    contCPU++
+
                 }else if(file.lineas[instruccion][1].toLowerCase() =='muestre') {
                     if(file.lineas[instruccion][2].toUpperCase().trim() == 'ACUMULADOR'){
                         monitor.innerHTML= `El resultado del(os)
@@ -222,6 +250,8 @@ function correrArchivo(acumulador, filesCH){
                             }  
                         } 
                     }
+                    contIO++;
+
                 }else if(file.lineas[instruccion][1].toLowerCase() =='imprima') {
                     if(file.lineas[instruccion][2].toUpperCase().trim() == 'ACUMULADOR'){
                         impresora.innerHTML= `El resultado del(os)
@@ -239,6 +269,8 @@ function correrArchivo(acumulador, filesCH){
                             }  
                         } 
                     }
+                    contIO++;
+
                 }else if(file.lineas[instruccion][1].toLowerCase() == 'extraiga'){
                     longitud= acumulador.length;
                     console.log(`la longitud del acumulador es ${longitud}`);
@@ -247,6 +279,8 @@ function correrArchivo(acumulador, filesCH){
                         extraer.push(acumulador[i]);
                     }
                     acumulador = extraer.join('');
+                    contCPU++
+
                     
                 }else if(file.lineas[instruccion][1].toLowerCase() =='retorne') {
                     acumulador= 0;
@@ -264,6 +298,7 @@ function correrArchivo(acumulador, filesCH){
                     }
                     console.log(`La Raiz Cuadrada del Número${raiz.valor} = ${resultadoRaiz}`);
                     alert(`La Raiz Cuadrada del Número${raiz.valor} = ${resultadoRaiz}`);
+                    contCPU++
 
                 }
                 console.log(`acumulador> ${acumulador}`);

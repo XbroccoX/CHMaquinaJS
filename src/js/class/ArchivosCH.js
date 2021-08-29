@@ -1,16 +1,16 @@
 class ArchivosCH{
     static contadorId = 0;
-    constructor(name, lineas, fpMemoria, fpvMemoria, ipMemory, etiquetas, variables){
+    constructor(name, lineas, fpMemoria, fpvMemoria, ipMemory, etiquetas, variables, ti, priority){
          this._id = ++ArchivosCH.contadorId;
          this._name = name;
          this._lineas = lineas;//
          this._fpMemoria = fpMemoria; //muestra el numero donde acaba topdo con memoria sin variables
          this._fpvMemoria = fpvMemoria; //muestra el numero donde acaba todo con memoria con variables
          this._ipMemory = ipMemory; //initial position
-        //  this._listaMostrar = listaMostrar;//pantalla
-        //  this._listaImprimir = listaImprimir;//impresora
          this._etiquetas = etiquetas;
          this._variables = variables;
+         this._ti = ti //Tiempo de llegada del archivo
+         this._priority = priority; //Es el algoritmo seleccinado desde el input select
     }
     get id(){
         return this._id;
@@ -30,19 +30,23 @@ class ArchivosCH{
     get ipMemory(){//kernel +1
         return this._ipMemory;
     }
-    // get listaMostrar(){
-    //     return this._listaMostrar;
-    // }
-    // get listaImprimir(){
-    //     return this._listaImprimir;
-    // }
+  
     get etiquetas(){
         return this._etiquetas;
     }
     get variables(){
-        return this._variables
+        return this._variables;
+    }
+    get ti(){
+        return this._ti;
+    }
+    get priority(){
+        return this._priority;
     }
     
+
+
+
     set name(name){
         this._name = name;
     }
@@ -58,36 +62,19 @@ class ArchivosCH{
     set ipMemory(ipMemory){
         this._ipMemory = ipMemory;
     }
-    // set listaMostrar(listaMostrar){
-    //     this._listaMostrar=listaMostrar;
-    // }
-    // set listaImprimir(listaImprimir){
-    //     this._listaImprimir = listaImprimir;
-    // }
+
     set etiquetas(etiquetas){
         this._etiquetas = etiquetas;
     }
     set variables(variables){
         this._variables = variables;
     }
+    set ti(ti){
+        this._ti = ti;
+    }
+    set priority(priority){
+        this._priority = priority;
+    }
 
 
 }
-// _id: string = '';
-// _name: string = '';
-// // instructions amount
-// _amountInst: number = 0;
-// // initial position in memory
-// ipMemory: string = '';
-// // final position in memory
-// fpMemory: string = '';
-// // final position with variables in memory
-// fpvMemory: string = '';
-// // final position with variables in memory
-// codeLines: string[] = [];
-// tags: Tag[] = [];
-// variables: Variable[] = [];
-// // list to show
-// listToShow: any[] = [];
-// // list to print
-// listToPrint: any[] = [];

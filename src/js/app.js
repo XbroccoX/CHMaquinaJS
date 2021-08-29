@@ -56,6 +56,14 @@ let listRb=[];
 let listRlc=[];
 let listRlp=[];
 
+// Variables FASE C
+let inputMetodoAlgoritm = document.getElementById('inputGroupSelect01');
+let inputQuantum = document.getElementById('q')
+let quantum = 0;
+let contIO= 0; //conteo de las instrucciones de entrada y salida (Lea, Muestre, Imprima)
+let contCPU= 0; //el conteo de las demás instrucciones excluyendo las declarativas(Nueva, Etiqueta, Retorne, comentarios)  da las ráfagas de CPU.
+
+
 
 file.addEventListener('change', leerArchivo);
 
@@ -68,9 +76,9 @@ function cerrarDiv() {
     divMemoria.style.display = 'none';
     cerrar.style.display = 'none'
 }
+
 function ejecutarPasoAPaso(){
   stepByStep(acumStepbyStep,filesCH, contPasoApaso);
-  
 };
 
 
@@ -85,8 +93,22 @@ function zeroFill( number, width )
 }
 // let CEP=0
 function ejecutarPrograma(){
-  console.log('entra al ejecutar programa');
-  console.log(`acomulador input${acomulador}`);
+  // console.log('entra al ejecutar programa');
+  // console.log(`acomulador input${acomulador}`);
+  if (algorithmToUse === 'RR' || algorithmToUse === 'RRP') {
+    filesCH = runRoundRobin(filesCH, quantum);
+  }else if (algorithmToUse === 'srtn') {
+    filesCH = srtnService.runSrtn(filesCH);
+    console.log(filesCH);
+  }else {
+    correrArchivo(acomulador,filesCH);
+  }
+
+
+
+
+
+
   correrArchivo(acomulador,filesCH);
   // CEP++;
   ejecutar.style.display= 'none'

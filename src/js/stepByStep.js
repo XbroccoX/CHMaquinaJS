@@ -6,16 +6,16 @@ function stepByStep(acumulador, filesCH, contadorPasoAPaso){
 
         if (file.lineas[contadorPasoAPaso][1].trim().includes('//')) {
             let unSpace= file.lineas[contadorPasoAPaso].toString().replaceAll(',',' ')
-            //confirm(`La instruccion es ${unSpace}`);
+            confirm(`La instruccion es ${unSpace}`);
         }
         
         else if(file.lineas[contadorPasoAPaso][1].toLowerCase() == 'nueva') {
             let unSpace= file.lineas[contadorPasoAPaso].toString().replaceAll(',',' ')
-            //confirm(`La instruccion es ${unSpace}`)
+            confirm(`La instruccion es ${unSpace}`)
 
         }else if(file.lineas[contadorPasoAPaso][1].toLowerCase() == 'etiqueta') {
             let unSpace= file.lineas[contadorPasoAPaso].toString().replaceAll(',',' ')
-            //confirm(`La instruccion es ${unSpace}`)
+            confirm(`La instruccion es ${unSpace}`)
             
         }
 
@@ -31,7 +31,7 @@ function stepByStep(acumulador, filesCH, contadorPasoAPaso){
             console.log('lea');
 
             let unSpace= file.lineas[contadorPasoAPaso].toString().replaceAll(',',' ')
-            //confirm(`La instruccion es ${unSpace}`)
+            confirm(`La instruccion es ${unSpace}`)
             
         }else if(file.lineas[contadorPasoAPaso][1].toLowerCase() =='cargue') {
             for (let variable = 0; variable < file.variables.length; variable++) {
@@ -43,7 +43,7 @@ function stepByStep(acumulador, filesCH, contadorPasoAPaso){
 
             inputAcumulador.value = acumulador;
             let unSpace= file.lineas[contadorPasoAPaso].toString().replaceAll(',',' ')
-            //confirm(`La instruccion es ${unSpace}`)
+            confirm(`La instruccion es ${unSpace}`)
 
 
         }else if(file.lineas[contadorPasoAPaso][1].toLowerCase() =='almacene') {
@@ -55,7 +55,7 @@ function stepByStep(acumulador, filesCH, contadorPasoAPaso){
             inputAcumulador.value=acumulador;
             
             let unSpace= file.lineas[contadorPasoAPaso].toString().replaceAll(',',' ')
-            //confirm(`La instruccion es ${unSpace}`)
+            confirm(`La instruccion es ${unSpace}`)
 
 
         }else if(file.lineas[contadorPasoAPaso][1].trim().toLowerCase() === 'vaya') {
@@ -71,7 +71,7 @@ function stepByStep(acumulador, filesCH, contadorPasoAPaso){
             }
 
             let unSpace= file.lineas[contadorPasoAPaso].toString().replaceAll(',',' ');
-            //confirm(`La instruccion es ${unSpace}`);
+            confirm(`La instruccion es ${unSpace}`);
 
 
         }else if(file.lineas[contadorPasoAPaso][1].trim().toLowerCase() =='vayasi') {
@@ -94,7 +94,7 @@ function stepByStep(acumulador, filesCH, contadorPasoAPaso){
             }
 
             let unSpace= file.lineas[contadorPasoAPaso].toString().replaceAll(',',' ');
-            //confirm(`La instruccion es ${unSpace}`);
+            confirm(`La instruccion es ${unSpace}`);
 
 
         }else if(file.lineas[contadorPasoAPaso][1].toLowerCase() =='sume') {
@@ -105,7 +105,7 @@ function stepByStep(acumulador, filesCH, contadorPasoAPaso){
                 }
                 inputAcumulador.value =acumulador;
             }
-            //confirm(`el contador va en: ${contadorPasoAPaso}`)
+            confirm(`el contador va en: ${contadorPasoAPaso}`)
 
 
         }else if(file.lineas[contadorPasoAPaso][1].toLowerCase() =='reste') {
@@ -119,7 +119,7 @@ function stepByStep(acumulador, filesCH, contadorPasoAPaso){
             }
 
             let unSpace= file.lineas[contadorPasoAPaso].toString().replaceAll(',',' ')
-            //confirm(`La instruccion es ${unSpace}`)
+            confirm(`La instruccion es ${unSpace}`)
 
 
         }else if(file.lineas[contadorPasoAPaso][1].toLowerCase() =='multiplique') {
@@ -131,7 +131,7 @@ function stepByStep(acumulador, filesCH, contadorPasoAPaso){
             }
 
             let unSpace= file.lineas[contadorPasoAPaso].toString().replaceAll(',',' ')
-            //confirm(`La instruccion es ${unSpace}`)
+            confirm(`La instruccion es ${unSpace}`)
 
 
         }else if(file.lineas[contadorPasoAPaso][1].toLowerCase() =='divida') {
@@ -143,7 +143,7 @@ function stepByStep(acumulador, filesCH, contadorPasoAPaso){
             }
 
             let unSpace= file.lineas[contadorPasoAPaso].toString().replaceAll(',',' ')
-            //confirm(`La instruccion es ${unSpace}`)
+            confirm(`La instruccion es ${unSpace}`)
 
 
         }else if(file.lineas[contadorPasoAPaso][1].toLowerCase() =='potencia') {
@@ -155,7 +155,7 @@ function stepByStep(acumulador, filesCH, contadorPasoAPaso){
             }
 
             let unSpace= file.lineas[contadorPasoAPaso].toString().replaceAll(',',' ')
-            //confirm(`La instruccion es ${unSpace}`)
+            confirm(`La instruccion es ${unSpace}`)
 
 
         }else if(file.lineas[contadorPasoAPaso][1].toLowerCase() =='modulo') {
@@ -167,7 +167,7 @@ function stepByStep(acumulador, filesCH, contadorPasoAPaso){
             }
 
             let unSpace= file.lineas[contadorPasoAPaso].toString().replaceAll(',',' ')
-            //confirm(`La instruccion es ${unSpace}`)
+            confirm(`La instruccion es ${unSpace}`)
 
 
         }else if(file.lineas[contadorPasoAPaso][1].toLowerCase() =='concatene') {
@@ -181,7 +181,7 @@ function stepByStep(acumulador, filesCH, contadorPasoAPaso){
             }
 
             let unSpace= file.lineas[contadorPasoAPaso].toString().replaceAll(',',' ')
-            //confirm(`La instruccion es ${unSpace}`)
+            confirm(`La instruccion es ${unSpace}`)
 
 
         }else if(file.lineas[contadorPasoAPaso][1].toLowerCase() =='elimine') {
@@ -190,7 +190,7 @@ function stepByStep(acumulador, filesCH, contadorPasoAPaso){
 
             inputAcumulador.value=acumulador;
             let unSpace= file.lineas[contadorPasoAPaso].toString().replaceAll(',',' ')
-            //confirm(`La instruccion es ${unSpace}`);
+            confirm(`La instruccion es ${unSpace}`);
 
 
         }else if(file.lineas[contadorPasoAPaso][1].trim() =='Y') {
@@ -215,7 +215,7 @@ function stepByStep(acumulador, filesCH, contadorPasoAPaso){
                         }
                     }
             let unSpace= file.lineas[contadorPasoAPaso].toString().replaceAll(',',' ')
-            //confirm(`La instruccion es ${unSpace}`)
+            confirm(`La instruccion es ${unSpace}`)
 
 
         }else if(file.lineas[contadorPasoAPaso][1].trim() =='O') {
@@ -245,7 +245,7 @@ function stepByStep(acumulador, filesCH, contadorPasoAPaso){
                 }
 
             let unSpace= file.lineas[contadorPasoAPaso].toString().replaceAll(',',' ')
-            //confirm(`La instruccion es ${unSpace}`)
+            confirm(`La instruccion es ${unSpace}`)
 
 
         }else if(file.lineas[contadorPasoAPaso][1].trim() =='NO') {
@@ -270,7 +270,7 @@ function stepByStep(acumulador, filesCH, contadorPasoAPaso){
             console.log(`${file.lineas[contadorPasoAPaso][1]} = ${v.valor}`);
 
             let unSpace= file.lineas[contadorPasoAPaso].toString().replaceAll(',',' ')
-            //confirm(`La instruccion es ${unSpace}`)
+            confirm(`La instruccion es ${unSpace}`)
 
         }else if(file.lineas[contadorPasoAPaso][1].toLowerCase() =='muestre') {
             if(file.lineas[contadorPasoAPaso][2].toUpperCase().trim() == 'ACUMULADOR'){
@@ -291,7 +291,7 @@ function stepByStep(acumulador, filesCH, contadorPasoAPaso){
             }
 
             let unSpace= file.lineas[contadorPasoAPaso].toString().replaceAll(',',' ')
-            //confirm(`La instruccion es ${unSpace}`)
+            confirm(`La instruccion es ${unSpace}`)
 
 
         }else if(file.lineas[contadorPasoAPaso][1].toLowerCase() =='imprima') {
@@ -313,7 +313,7 @@ function stepByStep(acumulador, filesCH, contadorPasoAPaso){
             }
 
             let unSpace= file.lineas[contadorPasoAPaso].toString().replaceAll(',',' ')
-            //confirm(`La instruccion es ${unSpace}`)
+            confirm(`La instruccion es ${unSpace}`)
 
 
         }else if(file.lineas[contadorPasoAPaso][1].toLowerCase() == 'extraiga'){
@@ -327,13 +327,13 @@ function stepByStep(acumulador, filesCH, contadorPasoAPaso){
 
             inputAcumulador.value = acumulador;
             let unSpace= file.lineas[contadorPasoAPaso].toString().replaceAll(',',' ')
-            //confirm(`La instruccion es ${unSpace}`)
+            confirm(`La instruccion es ${unSpace}`)
 
 
         }else if(file.lineas[contadorPasoAPaso][1].toLowerCase().trim() =='retorne') {
             
             let unSpace= file.lineas[contadorPasoAPaso].toString().replaceAll(',',' ')
-            //confirm(`La instruccion es ${unSpace}`)
+            confirm(`La instruccion es ${unSpace}`)
             if(Number(nextFile + 1) === Number(filesCH.length)){
                 btnStepbyStep.style.display='none';
             }
@@ -352,7 +352,7 @@ function stepByStep(acumulador, filesCH, contadorPasoAPaso){
             console.log(`La Raiz Cuadrada del Número${raiz.valor} = ${resultadoRaiz}`);
             alert(`La Raiz Cuadrada del Número${raiz.valor} = ${resultadoRaiz}`);
             let unSpace= file.lineas[contadorPasoAPaso].toString().replaceAll(',',' ')
-            //confirm(`La instruccion es ${unSpace}`)
+            confirm(`La instruccion es ${unSpace}`)
         }
         if (contadorPasoAPaso !== - 1){
             showMemory(file.lineas[contadorPasoAPaso][2],file, acumulador);

@@ -2,12 +2,14 @@
 filesCH = []
 var initialPosition = 0;
 let listaEtiquetas = []; //Lista para etiquetas para Mostrar en el div
-
+let archivoSolo=[]
 
 function leerArchivo(evento) {
 
-  let archivoCH= new ArchivosCH()
+console.log(inputMetodoAlgoritm.value)
 
+  let archivoCH= new ArchivosCH()
+  let TiAnterior = 0;
 
     for(let i=0; i<evento.target.files.length; i++) {
 
@@ -103,13 +105,11 @@ function leerArchivo(evento) {
 
       }
     }
-    
     let bool = verificarSintaxis(listaPrueba); //bool trae la lista de los errores
 
     let cf = 0;
     let arrayVariablesIndividual=[];
-    let idVariables = Number(listaFile.length)+Number(kernel.value)+1;
-
+    let idVariables = Number(listaFile.length)+Number(kernel.value)+1; 
 
 
     for(l of listaPrueba) {
@@ -152,6 +152,10 @@ function leerArchivo(evento) {
     arrayEtiquetasFile =[]
 //Array de variables en FileCH
     archivoCH.lineas = listaFile;
+  
+    
+  
+    
     
   
     sumArchivo = archivoCH.lineas.length;
@@ -217,6 +221,13 @@ function leerArchivo(evento) {
   archivoCH.fpMemoria = sumArchivo + Number(kernel.value);
 
   archivoCH.fpvMemoria = sumArchivo + archivoCH.variables.length + Number(kernel.value);
+  algoritmToUse = inputMetodoAlgoritm.value
+  console.log(algoritmToUse)
+  //PRIORITY ASIGN
+    if (algoritmToUse === 'prioridad') {
+      archivoCH.priority = Number(prompt(`Defina la prioridad del proceso: ${archivoCH.name} en un rango de 0 a 100`));
+    }
+
 
   
     numVar=arrayVariables.length;
@@ -386,8 +397,17 @@ function leerArchivo(evento) {
   
           }
         }
+//TIEMPO DE LLEGADA DEL PROGRAMA
+        for (let i = 0; i < filesCH.length; i++) {
+          if(i !== 0){
+            filesCH[i].ti = (TiAnterior + filesCH[i - 1].lineas.length) / 4;
+            TiAnterior = filesCH[i].ti
+          }
+          filesCH[i].ti = TiAnterior;
+        }
 
-
+// FUNCION QUE ORDENA LOS ALGORITMOS DEPENDIENDO LO QUE SE ESCOJA
+        ordenarAlgoritmos(filesCH, algoritmToUse, Number(inputQuantum.value))
 
 
 
@@ -452,12 +472,11 @@ function leerArchivo(evento) {
       btnStepbyStep.style.display='inline-block'
       
       listaArchivos = lFinal;
-
+      
       })
       
     }
   }
-
 
 
 
