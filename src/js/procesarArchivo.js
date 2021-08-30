@@ -6,11 +6,9 @@ let archivoSolo=[]
 
 function leerArchivo(evento) {
 
-console.log(inputMetodoAlgoritm.value)
-
   let archivoCH= new ArchivosCH()
   let TiAnterior = 0;
-
+  
     for(let i=0; i<evento.target.files.length; i++) {
 
     document.getElementById('instrucciones').innerHTML = "";
@@ -106,6 +104,15 @@ console.log(inputMetodoAlgoritm.value)
       }
     }
     let bool = verificarSintaxis(listaPrueba); //bool trae la lista de los errores
+
+    archivoCH.io= contIO;
+    archivoCH.cpu = contCPU;
+    archivoCH.initialRr = 0;
+
+    contIO = 0
+    contCPU = 0
+
+
 
     let cf = 0;
     let arrayVariablesIndividual=[];
@@ -224,10 +231,9 @@ console.log(inputMetodoAlgoritm.value)
   algoritmToUse = inputMetodoAlgoritm.value
   console.log(algoritmToUse)
   //PRIORITY ASIGN
-    if (algoritmToUse === 'prioridad') {
+    if (algoritmToUse === 'prioridad' || algoritmToUse === 'RRP' ) {
       archivoCH.priority = Number(prompt(`Defina la prioridad del proceso: ${archivoCH.name} en un rango de 0 a 100`));
     }
-
 
   
     numVar=arrayVariables.length;
@@ -400,7 +406,7 @@ console.log(inputMetodoAlgoritm.value)
 //TIEMPO DE LLEGADA DEL PROGRAMA
         for (let i = 0; i < filesCH.length; i++) {
           if(i !== 0){
-            filesCH[i].ti = (TiAnterior + filesCH[i - 1].lineas.length) / 4;
+            filesCH[i].ti = Number(((TiAnterior + filesCH[i - 1].lineas.length) / 4).toFixed(0));
             TiAnterior = filesCH[i].ti
           }
           filesCH[i].ti = TiAnterior;

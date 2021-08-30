@@ -27,7 +27,33 @@ function ordenarAlgoritmos  (filesCH, algorithmToUse, quantum){
         filesCH = filesCH.sort(
           (a, b) => Number(b.priority) - Number(a.priority)
         );
-    }
-    
+    }else if (algorithmToUse === 'RR') {
+
+        for (let file of filesCH) {
+          file.endingRr = quantum;
+        }
+  
+        filesCH.sort((a, b) => Number(a.id) - Number(b.id));
+  
+    }else if (algorithmToUse === 'RRP') {
+
+        filesCH = filesCH.sort((a, b) => Number(a.id) - Number(b.id));
+  
+  
+        filesCH = filesCH.sort(
+          (a, b) => Number(b.priority) - Number(a.priority)
+        );
+  
+        for (let file of filesCH) {
+          file.endingRr = quantum;
+        }
+  
+    }else if (algorithmToUse === 'srtn') {
+
+        filesCH.sort((a, b) => Number(a.id) - Number(b.id));
+  
+        // contId2 = +filesArrayFake[filesArrayFake.length - 1].fpvMemory + 1;
+  
+      }
 
 }

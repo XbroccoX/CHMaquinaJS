@@ -95,7 +95,13 @@ function verificarSintaxis(lista) {
         if (!(nombreVariables.includes(lista[instruccion][1]))) {
           errores.push("La variable " + lista[instruccion][1] + " no ha sido creada :" + linea);
         }
-  
+        
+
+        contIO++;
+        contCPU += Math.floor(Math.random() * 9) + 1;
+
+
+
       }else if(lista[instruccion][0].toLowerCase() =='cargue') {
   
         if (lista[instruccion].length > 2) {
@@ -107,7 +113,9 @@ function verificarSintaxis(lista) {
         if (!(nombreVariables.includes(lista[instruccion][1]))) {
             errores.push("La variable " + lista[instruccion][1] + " no ha sido creada: " + linea);
         }
-  
+        
+        contCPU++;
+
       }else if(lista[instruccion][0].toLowerCase() =='almacene') {
         
         if (lista[instruccion].length > 2) {
@@ -119,7 +127,9 @@ function verificarSintaxis(lista) {
         if (!(nombreVariables.includes(lista[instruccion][1]))) {
             errores.push("La variable " + lista[instruccion][1] + " no ha sido creada :" + linea);
         }
-  
+        
+        contCPU++;
+
       }else if(lista[instruccion][0].toLowerCase() =='vaya') {
   
         if (lista[instruccion].length > 2) {
@@ -129,6 +139,8 @@ function verificarSintaxis(lista) {
             errores.push("Error de sintaxis, menos de 2 operadores especificados: " + linea);
         }
   
+        contCPU++;
+
       }else if(lista[instruccion][0].toLowerCase() =='vayasi') {
   
         if (lista[instruccion].length > 3) {
@@ -137,6 +149,9 @@ function verificarSintaxis(lista) {
         if (lista[instruccion].length < 3) {
             errores.push("Error de sintaxis, menos de 2 operadores especificados: " + linea);
         }
+
+
+        contCPU++;
   
       }else if(lista[instruccion][0].toLowerCase() =='etiqueta') {
   
@@ -168,6 +183,9 @@ function verificarSintaxis(lista) {
         if (!(nombreVariables.includes(lista[instruccion][1]))) {
           errores.push("La variable " + lista[instruccion][1] + " no ha sido creada  :" + linea);
         }
+
+
+        contCPU++;
   
       }else if(lista[instruccion][0].toLowerCase() =='reste') {
   
@@ -180,6 +198,9 @@ function verificarSintaxis(lista) {
         if (!(nombreVariables.includes(lista[instruccion][1]))) {
           errores.push("La variable " + lista[instruccion][1] + " no ha sido creada :" + linea);
         }
+
+
+        contCPU++;
   
       }else if(lista[instruccion][0].toLowerCase() == 'multiplique') {
   
@@ -192,6 +213,9 @@ function verificarSintaxis(lista) {
         if (!(nombreVariables.includes(lista[instruccion][1]))) {
           errores.push("La variable " + lista[instruccion][1] + " no ha sido creada :" + linea);
         }
+
+
+        contCPU++;
   
       }else if(lista[instruccion][0].toLowerCase() =='divida') {
   
@@ -204,6 +228,8 @@ function verificarSintaxis(lista) {
         if (!(nombreVariables.includes(lista[instruccion][1]))) {
             errores.push("La variable " + lista[instruccion][1] + " no ha sido creada  :" + linea);
         }
+
+        contCPU++;
   
       }else if(lista[instruccion][0].toLowerCase() == 'potencia') {
   
@@ -216,6 +242,8 @@ function verificarSintaxis(lista) {
         if (!(nombreVariables.includes(lista[instruccion][1]))) {
             errores.push("La variable " + lista[instruccion][1] + " no ha sido creada :" + linea);
         }
+
+        contCPU++;
   
       }else if(lista[instruccion][0].toLowerCase() == 'modulo') {
   
@@ -228,6 +256,8 @@ function verificarSintaxis(lista) {
         if (!(nombreVariables.includes(lista[instruccion][1]))) {
             errores.push("La variable " + lista[instruccion][1] + " no ha sido creada :" + linea);
         }
+
+        contCPU++;
   
       }else if(lista[instruccion][0].toLowerCase() =='concatene') {
   
@@ -240,6 +270,9 @@ function verificarSintaxis(lista) {
         if (!(nombreVariables.includes(lista[instruccion][1]))) {
             errores.push("La variable " + lista[instruccion][1] + " no ha sido creada :" + linea);
         }
+
+
+        contCPU++;
   
       }else if(lista[instruccion][0].toLowerCase() =='elimine') {
   
@@ -252,6 +285,8 @@ function verificarSintaxis(lista) {
         if (!(nombreVariables.includes(lista[instruccion][1]))) {
             errores.push("La variable " + lista[instruccion][1] + " no ha sido creada: " + linea);
         }
+
+        contCPU++;
   
       }else if(lista[instruccion][0] =='Y') {
   
@@ -272,6 +307,9 @@ function verificarSintaxis(lista) {
             }
           }
         }
+
+
+        contCPU++;
   
       }else if(lista[instruccion][0] == 'O') {
   
@@ -293,6 +331,9 @@ function verificarSintaxis(lista) {
           }
   
         }
+
+
+        contCPU++;
   
       }else if(lista[instruccion][0].toUpperCase() =='NO') {
   
@@ -309,6 +350,9 @@ function verificarSintaxis(lista) {
             errores.push("La variable " + lista[instruccion][2] + " no ha sido creada: " + linea);
           }
         }
+
+
+        contCPU++;
   
       }else if(lista[instruccion][0].toLowerCase() == 'muestre') {
   
@@ -321,6 +365,9 @@ function verificarSintaxis(lista) {
         if (!(nombreVariables.includes(lista[instruccion][1])) && !(lista[instruccion][1]==("acumulador")) ) {
           errores.push("La variable " + lista[instruccion][1] + " no ha sido creada: " + linea);
         }
+
+        contIO++;
+        contCPU += Math.floor(Math.random() * 9) + 1;
   
       }else if(lista[instruccion][0].toLowerCase() == 'imprima') {
   
@@ -333,7 +380,22 @@ function verificarSintaxis(lista) {
         if (!(nombreVariables.includes(lista[instruccion][1])) && !(lista[instruccion][1]==("acumulador"))) {
           errores.push("La variable " + lista[instruccion][1] + " no ha sido creada: " + linea);
         }
-  
+        
+        contIO++;
+        contCPU += Math.floor(Math.random() * 9) + 1;
+
+
+      }else if (lista[instruccion][0].trim().toLowerCase() == 'extraiga') {
+
+        if (lista[instruccion].length > 2) {
+          errores.push("Error de sintaxis, más de 2 operadores especificados: " + linea);
+        }
+        if (lista[instruccion].length < 1) {
+          errores.push("Error de sintaxis, menos de 1 operadores especificados: " + linea);
+        }
+        contCPU++;
+
+
       }else if(lista[instruccion][0].toLowerCase() =='retorne') {
   
         if (lista[instruccion].length > 2) {

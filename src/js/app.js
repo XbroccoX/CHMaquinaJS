@@ -95,75 +95,70 @@ function zeroFill( number, width )
 function ejecutarPrograma(){
   // console.log('entra al ejecutar programa');
   // console.log(`acomulador input${acomulador}`);
-  if (algorithmToUse === 'RR' || algorithmToUse === 'RRP') {
-    filesCH = runRoundRobin(filesCH, quantum);
-  }else if (algorithmToUse === 'srtn') {
-    filesCH = srtnService.runSrtn(filesCH);
-    console.log(filesCH);
+  if (inputMetodoAlgoritm.value === 'RR' || inputMetodoAlgoritm.value === 'RRP') {
+    roundRobin(filesCH, Number(inputQuantum.value));
+  }else if (inputMetodoAlgoritm.value === 'srtn') {
+    runSrtn(filesCH);
   }else {
     correrArchivo(acomulador,filesCH);
   }
-
-
-
-
-
-
-  correrArchivo(acomulador,filesCH);
   // CEP++;
   ejecutar.style.display= 'none'
 }
 
 function showMemory(varChange,lista,acum){//entra el [2]
   // debugger
-  for(l of lista.variables){
-      if(varChange== l.nombre){
-        for(v of listaArchivos){
-          if(varChange === v[1]){
-            v[3]=l.valor;
-          }
-        }
-      } 
-  }
-
-
-  let contador = 0;
-
-        let lAcumulador= [acum, 'Acumulador']
-        let arrayMemoria= []; 
-
-        let suma = +kernel.value + +listaArchivos.length ;
-         
-        if(typeof acum == 'object') {
-          acum=0;
-        }
-        arrayMemoria.push(lAcumulador);
-        for(let s=1; s<=Number(memoriaInput.value); s++) {
-            if(s<=kernel.value) {
-                arrayMemoria.push(`${s} CHSO_V2021`);
-            } else if(s>kernel.value && s<=suma){
-              let commentIndexMemory = listaArchivos[contador].findIndex(comment => comment =='//');
-              if (commentIndexMemory !== -1) {
-                listaArchivos[contador].splice(commentIndexMemory,1);
-              }
-                arrayMemoria.push(listaArchivos[contador]);
-                  listaArchivos[contador].toString().replaceAll(',',' ');
-                  contador++; 
-            } else {
-                arrayMemoria.push(`${s} - - - - - - `)
+  console.log(lista);
+  if(lista !== undefined){
+    for(l of lista.variables){
+        if(varChange== l.nombre){
+          for(v of listaArchivos){
+            if(varChange === v[1]){
+              v[3]=l.valor;
             }
-  
-        }
+          }
+        } 
+    }
 
-        let sinEspacios= [];
-        let contar;
-        for(m of arrayMemoria) {
-          contar = m.toString().replaceAll(',', ' ');
-          sinEspacios.push(contar);
-        }
-        
-        divMemoria.innerHTML = sinEspacios.join('<br></br>');
-        inputAcumulador.value=acum;
+
+    let contador = 0;
+
+          let lAcumulador= [acum, 'Acumulador']
+          let arrayMemoria= []; 
+
+          let suma = +kernel.value + +listaArchivos.length ;
+          
+          if(typeof acum == 'object') {
+            acum=0;
+          }
+          arrayMemoria.push(lAcumulador);
+          for(let s=1; s<=Number(memoriaInput.value); s++) {
+              if(s<=kernel.value) {
+                  arrayMemoria.push(`${s} CHSO_V2021`);
+              } else if(s>kernel.value && s<=suma){
+                let commentIndexMemory = listaArchivos[contador].findIndex(comment => comment =='//');
+                if (commentIndexMemory !== -1) {
+                  listaArchivos[contador].splice(commentIndexMemory,1);
+                }
+                  arrayMemoria.push(listaArchivos[contador]);
+                    listaArchivos[contador].toString().replaceAll(',',' ');
+                    contador++; 
+              } else {
+                  arrayMemoria.push(`${s} - - - - - - `)
+              }
+    
+          }
+
+          let sinEspacios= [];
+          let contar;
+          for(m of arrayMemoria) {
+            contar = m.toString().replaceAll(',', ' ');
+            sinEspacios.push(contar);
+          }
+          
+          divMemoria.innerHTML = sinEspacios.join('<br></br>');
+          inputAcumulador.value=acum;
+  }
 }
 // console.log(CEP);
 
