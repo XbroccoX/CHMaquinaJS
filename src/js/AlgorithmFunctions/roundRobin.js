@@ -26,7 +26,6 @@ function roundRobin (filesCH, quantum){
                 if (filesCH[file].lineas[instruccion][2] == filesCH[file].variables[variable].nombre) {
                 let newValue = prompt(`Ingrese el VALOR de la variable ${filesCH[file].variables[variable].nombre}`);
                 filesCH[file].variables[variable].valor = String(newValue);
-                console.log(filesCH[file].variables[variable]);
                 }
             }
             console.log('lea');

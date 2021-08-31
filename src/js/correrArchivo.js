@@ -30,7 +30,6 @@ function correrArchivo(acumulador, filesCH){
                         console.log(file.variables[variable]);
                         }
                     }
-                    console.log('lea');
                     
                     
                     
@@ -71,7 +70,6 @@ function correrArchivo(acumulador, filesCH){
                 if(Number(acumulador) > 0) {
                     for(e of file.etiquetas) {
                         if(file.lineas[instruccion][2].trim().toLowerCase() == e.nombre.trim().toLowerCase() && e.sobrepasa == false) {
-                            console.log('Entró a la recursión');
                             instruccion = Number(e.valor) - 2;
                         }
                     }
@@ -84,7 +82,6 @@ function correrArchivo(acumulador, filesCH){
                     } 
                     }
                 }
-                console.log('Me salí x2');
                 
             
 

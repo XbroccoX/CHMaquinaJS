@@ -2,7 +2,6 @@ function stepByStep(acumulador, filesCH, contadorPasoAPaso){
 
     
         let file = filesCH[nextFile];
-        console.log(file.name);
 
         if (file.lineas[contadorPasoAPaso][1].trim().includes('//')) {
             let unSpace= file.lineas[contadorPasoAPaso].toString().replaceAll(',',' ')
@@ -79,7 +78,6 @@ function stepByStep(acumulador, filesCH, contadorPasoAPaso){
             if(Number(acumulador) > 0) {
                 for(e of file.etiquetas) {
                     if(file.lineas[contadorPasoAPaso][2].trim().toLowerCase() == e.nombre.trim().toLowerCase() && e.sobrepasa == false) {
-                        console.log('Entró a la recursión');
                         contadorPasoAPaso = Number(e.valor) - 2;
                     }
                 }
@@ -87,7 +85,6 @@ function stepByStep(acumulador, filesCH, contadorPasoAPaso){
             } else if(acumulador < 0) {
                 for(e of file.etiquetas) {
                     if(file.lineas[contadorPasoAPaso][3].trim().toLowerCase() == e.nombre.trim().toLowerCase() && e.sobrepasa === false) {
-                        console.log('Entró a la recursión');
                         contadorPasoAPaso = Number(e.valor) - 2;
                     } 
                 }

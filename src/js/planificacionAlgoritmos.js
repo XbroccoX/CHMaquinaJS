@@ -1,11 +1,11 @@
 function ordenarAlgoritmos  (filesCH, algorithmToUse, quantum){
-    console.log(quantum);
-    console.log(filesCH);
-    console.log(algorithmToUse);
+    // console.log(quantum);
+    // console.log(filesCH);
+    // console.log(algorithmToUse);
 
     if (algorithmToUse === 'fcfs'){ //orden de llegada
         filesCH = filesCH.sort((a, b) => Number(a.id) - Number(b.id));
-        console.log(`entra al FCFS`);
+        // console.log(`entra al FCFS`);
     
     
     }else if (algorithmToUse === 'sjf'){ //dependiendo el n[umero de linea de menor a mayor

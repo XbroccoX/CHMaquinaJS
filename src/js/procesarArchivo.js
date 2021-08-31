@@ -229,7 +229,6 @@ function leerArchivo(evento) {
 
   archivoCH.fpvMemoria = sumArchivo + archivoCH.variables.length + Number(kernel.value);
   algoritmToUse = inputMetodoAlgoritm.value
-  console.log(algoritmToUse)
   //PRIORITY ASIGN
     if (algoritmToUse === 'prioridad' || algoritmToUse === 'RRP' ) {
       archivoCH.priority = Number(prompt(`Defina la prioridad del proceso: ${archivoCH.name} en un rango de 0 a 100`));
@@ -428,7 +427,7 @@ function leerArchivo(evento) {
         
         // Agrega en el footer las lineas
           // id
-          console.log(filesCH);
+          // console.log(filesCH);
         listId.push(zeroFill(numId,3))
         numId++;
           //PRGRAMA
