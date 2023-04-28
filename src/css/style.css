@@ -3,12 +3,14 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 :root {
   --colorBtn: linear-gradient(135deg, #43cbff 10%, #9708cc 100%);
   --windowBlack: rgba(0, 0, 0, 0.5);
   --windowWhite: rgba(255, 255, 255, 0.16);
   --circle: rgb(237, 232, 235);
 }
+
 html {
   font-size: 62.5%;
   color: whitesmoke;
@@ -43,6 +45,7 @@ body {
   background: url(../assets/img/fondo.png),
     linear-gradient(to left, #2b1f3b, #031424);
 }
+
 header {
   width: 100vw;
   height: 20%;
@@ -50,6 +53,7 @@ header {
   align-items: center;
   justify-content: space-between;
   padding: 15px;
+  padding-top: 40px;
   background-color: rgba(0, 0, 0, 0.5);
 }
 
@@ -59,6 +63,7 @@ header {
   font-weight: bold;
   box-shadow: 0px 4px 3px 2px rgb(0 0 0 / 16%);
 }
+
 .ejecutar {
   margin-left: 20px;
   padding: 5px;
@@ -68,6 +73,7 @@ header {
   margin-top: 5px;
   display: none;
 }
+
 .ejecutar:hover {
   color: #ddd;
   box-shadow: 0 0 0 2px rgb(237, 232, 235);
@@ -82,34 +88,42 @@ header {
   margin-left: 100px;
   display: none;
 }
+
 .paso:hover {
   cursor: pointer;
   color: white;
   box-shadow: 0 0 0 2px rgb(237, 232, 235);
 }
+
 .state {
   width: 40px;
   padding: 5px;
   border-radius: 50px;
   cursor: pointer;
 }
+
 /* BOTONES DE ESTADO DE MAQUINA */
 #encender {
   background-image: linear-gradient(135deg, #fff720 10%, #3cd500 100%);
 }
+
 #encender:hover {
   background-image: linear-gradient(135deg, #fdd819 10%, #e80505 100%);
 }
+
 #apagar {
   background-image: linear-gradient(135deg, #fdd819 10%, #e80505 100%);
   display: none;
 }
+
 #apagar:hover {
   background-image: linear-gradient(135deg, #fff720 10%, #3cd500 100%);
 }
+
 #addAlgoritm {
   display: none;
 }
+
 .fa-plus-square {
   margin: 0;
   color: greenyellow;
@@ -119,6 +133,7 @@ header {
   opacity: 80%;
   display: none;
 }
+
 .fa-plus-square:hover {
   opacity: 100%;
 }
@@ -128,6 +143,7 @@ header {
   align-items: end;
   justify-content: space-between;
 }
+
 .article {
   position: relative;
   background-color: white;
@@ -137,6 +153,7 @@ header {
   margin-left: 10px;
   margin-bottom: 20px;
 }
+
 .article p {
   position: absolute;
   top: -15px;
@@ -150,11 +167,13 @@ header {
   text-align: center;
   font-weight: bold;
 }
+
 #variables span {
   font-size: 1.4rem;
   margin-bottom: 10px;
   display: block;
 }
+
 #etiquetas span {
   font-size: 1.4rem;
   margin-bottom: 10px;
@@ -170,9 +189,11 @@ header {
   font-weight: 500;
   left: 150px;
 }
+
 .article-container--input {
   margin-top: 15px;
 }
+
 .show-memory button {
   background-image: var(--colorBtn);
   padding: 15px;
@@ -180,10 +201,12 @@ header {
   cursor: pointer;
   font-size: 13px;
 }
+
 .show-memory button:hover {
   color: var(--circle);
   outline: 2px solid var(--circle);
 }
+
 /* Segunda SECCION */
 
 main {
@@ -201,6 +224,7 @@ main .operations {
   height: 95%;
   position: relative;
 }
+
 .operations p {
   position: absolute;
   font-family: "Roboto", sans-serif;
@@ -213,6 +237,7 @@ main .operations {
   color: #031424;
   font-weight: 700;
 }
+
 .operaciones-texto {
   width: 100%;
   height: 400px;
@@ -227,16 +252,19 @@ main .operations {
   font-family: "Courier New", Courier, monospace;
   font-weight: bold;
 }
+
 /* MONITOR CONTAINER */
 
 main .monitor-container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
 }
+
 .monitor-container .container-interfaz {
   display: grid;
   grid-template-rows: 1fr 1fr;
 }
+
 /*IMAGENES DE MONITOR Y IMPRESORA*/
 .monitor-container .monitor-container--img {
   display: grid;
@@ -254,6 +282,7 @@ main .monitor-container {
   border-radius: 15px;
   height: 120px;
 }
+
 .monitor-text {
   margin-top: 18px;
   margin-left: -24px;
@@ -269,20 +298,24 @@ main .monitor-container {
   bottom: -72px;
   left: calc(50% - 40px);
 }
+
 #monitor {
   position: absolute;
   left: 10px;
   top: 10px;
   width: 200px;
 }
+
 .main-impresora {
   display: flex;
   flex-direction: column;
 }
+
 #printer {
   width: 100px;
   align-self: center;
 }
+
 .impresora-texto {
   background-color: var(--windowWhite);
   color: white;
@@ -311,6 +344,7 @@ main .monitor-container {
   cursor: pointer;
   display: none;
 }
+
 .container-memory button:hover {
   color: #ddd;
   box-shadow: 0 0 0 2px rgb(237, 232, 235);
@@ -329,18 +363,21 @@ main .monitor-container {
   display: none;
   color: white;
 }
+
 #variables {
   overflow: scroll;
   color: black;
   height: 190px;
   padding-top: 10px;
 }
+
 #etiquetas {
   overflow: scroll;
   color: black;
   height: 190px;
   padding-top: 10px;
 }
+
 footer {
   display: grid;
   grid-template-columns: 1fr 3fr 1fr 1fr 1fr 1fr;
@@ -354,6 +391,7 @@ footer {
   border-radius: 15px;
   color: aliceblue;
 }
+
 #footer-container-title {
   height: auto;
   margin-right: 10px;
